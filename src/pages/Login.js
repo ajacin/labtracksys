@@ -7,7 +7,7 @@ const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const authData = useSelector((state) => state.authentication.authentication);
+  const authData = useSelector((state) => state.authentication.auth);
   const dispatch = useDispatch();
   const handleEmailChange = (e) => {
     setUserName(e.target.value);
@@ -24,7 +24,7 @@ const Login = () => {
     try {
       console.log(username);
       console.log(password);
-      const response = await fetch("http://localhost:4000/login", {
+      const response = await fetch(process.env.REACT_APP_API_URL + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,14 +49,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-700 to-blue-700">
+    <div className="min-h-screen flex items-center justify-center md:bg-gradient-to-r md:from-cyan-700 md:to-blue-700">
       <div className="max-w-md w-full">
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-lg shadow-lg p-8"
+          className="bg-white md:rounded-lg md:shadow-lg p-8 flex justify-center flex-col"
         >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-            Labtracksys login
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6 self-center md:self-start">
+            KARUNYA LABORATORY
           </h2>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           <div className="mb-4">
@@ -67,7 +67,7 @@ const Login = () => {
               User Name
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lowercase"
               id="username"
               type="text"
               value={username}

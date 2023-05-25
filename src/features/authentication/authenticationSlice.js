@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const authenticationSlice = createSlice({
   name: "authentication",
   initialState: {
-    authentication: {
+    auth: {
       message: "not authenticated",
       token: "",
       refreshToken: "",
@@ -18,7 +18,7 @@ export const authenticationSlice = createSlice({
   reducers: {
     updateAuthenticated: (state, param) => {
       const { payload } = param;
-      state.authentication = { ...state.authentication, ...payload };
+      state.auth = { ...state.auth, ...payload };
     },
   },
 });
