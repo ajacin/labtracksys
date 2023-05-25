@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateAuthenticated } from "../features/authentication/authenticationSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const authData = useSelector((state) => state.authentication.authentication);
+  const dispatch = useDispatch();
   const handleEmailChange = (e) => {
     setUserName(e.target.value);
   };
+  const navigate = useNavigate();
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -28,11 +33,12 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
         // Successful login
         console.log("Login successful");
+        dispatch(updateAuthenticated(data));
+        navigate("/");
       } else {
         // Failed login
         setError(data.message);
@@ -67,6 +73,7 @@ const Login = () => {
               value={username}
               onChange={handleEmailChange}
               required
+              autoComplete="off"
             />
           </div>
           <div className="mb-6">

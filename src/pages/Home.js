@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Home() {
   const loc = useLocation();
   const [location, setLocation] = useState(useLocation());
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.authentication.authentication);
+  useEffect(() => {
+    if (auth.message !== "authenticated") navigate("/login");
+  }, []);
+
   return (
     <>
       <div>Home</div>
-      <p>note: to be fixed:{loc.state}</p>
+      <p>this page is protected for {auth.userDetails.username}</p>
     </>
   );
 }
