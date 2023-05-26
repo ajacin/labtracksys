@@ -9,27 +9,27 @@ import NewTest from "../pages/NewTest";
 import TestsLayout from "../components/router-layouts/TestsLayout";
 import Logout from "../components/Logout";
 import CreateUser from "../pages/CreateUser";
+import PrivateRoutes from "./PrivateRoutes";
 
 function AllRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home></Home>} />
-      <Route path="/lab" element={<Lab></Lab>} />
+      {/* Priavate Routes */}
+      <Route element={<PrivateRoutes></PrivateRoutes>}>
+        <Route path="/" element={<Home></Home>} />
+        <Route path="/lab" element={<Lab></Lab>} />
+        <Route path="/logout" element={<Logout></Logout>} />
+        <Route path="/tests" element={<TestsLayout></TestsLayout>}>
+          <Route index element={<Tests></Tests>} />
+          <Route path=":id" element={<Test></Test>} />
+          <Route path="new" element={<NewTest></NewTest>}></Route>
+        </Route>
+        <Route path="/users">
+          <Route path="create" element={<CreateUser></CreateUser>}></Route>
+        </Route>
+      </Route>
+      {/* Public Routes */}
       <Route path="/login" element={<Login></Login>} />
-      <Route path="/logout" element={<Logout></Logout>} />
-      <Route path="/users">
-        <Route path="create" element={<CreateUser></CreateUser>}></Route>
-      </Route>
-      <Route path="/tests" element={<TestsLayout></TestsLayout>}>
-        <Route index element={<Tests></Tests>} />
-        <Route path=":id" element={<Test></Test>} />
-        <Route path="new" element={<NewTest></NewTest>}></Route>
-      </Route>
-      {/* <Route path="/tests" element={<Tests></Tests>} />
-        <Route path="/tests/:id" element={<Test></Test>} />
-        <Route path="/tests/new" element={<NewTest></NewTest>}></Route> */}
-      {/* Order of the routes doesn't matter from v6. V6 identifies dynamic routes */}
-
       <Route path="*" element={<NotFound></NotFound>}></Route>
     </Routes>
   );

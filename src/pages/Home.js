@@ -8,9 +8,9 @@ function Home() {
   const [location, setLocation] = useState(useLocation());
   const navigate = useNavigate();
   const auth = useSelector((state) => state.authentication.auth);
-  useEffect(() => {
-    if (auth.message !== "authenticated") navigate("/login");
-  }, []);
+  //   useEffect(() => {
+  //     if (auth.message !== "authenticated") navigate("/login");
+  //   }, []);
 
   return (
     <>
