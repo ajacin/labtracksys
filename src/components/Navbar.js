@@ -33,6 +33,12 @@ const Navbar = () => {
                   Tests
                 </Link>
                 <Link
+                  to="/users/create"
+                  className="text-white hover:bg-secondary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Create User
+                </Link>
+                <Link
                   to="/logout"
                   className="text-white hover:bg-secondary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
                 >
@@ -95,6 +101,12 @@ const Navbar = () => {
             className="text-white hover:bg-secondary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
           >
             Tests
+          </Link>
+          <Link
+            to="/users/create"
+            className="text-white hover:bg-secondary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Create User
           </Link>
           <Link
             to="/logout"
