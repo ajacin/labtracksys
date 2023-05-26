@@ -8,7 +8,13 @@ module.exports = {
       secondary: "#345995",
       tertiary: "#03CEA4",
       light: "#F4FFFD",
-      dart: "#000505",
+      dark: "#000505",
+      white: "#FFFFFF",
+    },
+    extend: {
+      backgroundImage: {
+        hero: "url('/src/assets/images/bg-science.svg')",
+      },
     },
   },
 };

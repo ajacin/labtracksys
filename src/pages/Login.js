@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAuthenticated } from "../features/authentication/authenticationSlice";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 const Login = () => {
   const [username, setUserName] = useState("");
@@ -56,65 +57,70 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center md:bg-gradient-to-r md:from-cyan-700 md:to-blue-700">
-      <div className="max-w-md w-full">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white md:rounded-lg md:shadow-lg p-8 flex justify-center flex-col"
-        >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 self-center md:self-start">
-            KARUNYA LABORATORY
-          </h2>
-          {error && <div className="text-red-500 mb-4">{error}</div>}
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
-            >
-              User Name
-            </label>
-            <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lowercase"
-              id="username"
-              type="text"
-              value={username}
-              onChange={handleEmailChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-              required
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-primary hover:bg-secondary text-dark hover:text-light font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Sign In
-            </button>
-            <a
-              className="inline-block align-baseline font-bold text-sm text-slate-700 hover:text-slate-600"
-              href="#"
-            >
-              Forgot Password?
-            </a>
-          </div>
-        </form>
+    <div className="min-h-screen flex flex-col bg-hero bg-no-repeat sm:bg-primary items-center justify-between w-full ">
+      <div className="grow-0"></div>
+      <div className="flex grow-1 ">
+        <div className="max-w-md w-full">
+          <form
+            onSubmit={handleSubmit}
+            className=" bg-white md:rounded-lg shadow-lg shadow-dark p-8 flex justify-center flex-col w-full"
+          >
+            <h2 className=" text-2xl font-semibold text-gray-800 mb-6 self-center md:self-start">
+              {process.env.REACT_APP_LABORATORY_NAME}
+            </h2>
+            {error && <div className="text-red-500 mb-4">{error}</div>}
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="username"
+              >
+                User Name
+              </label>
+              <input
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lowercase"
+                id="username"
+                type="text"
+                value={username}
+                onChange={handleEmailChange}
+                required
+                autoComplete="off"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <Button
+                type="submit"
+                text="Sign In"
+                variant={"secondary"}
+              ></Button>
+              <a
+                className="inline-block align-baseline font-bold text-sm text-slate-700 hover:text-slate-600"
+                href="#"
+              >
+                Forgot Password?
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
+      <a href="https://storyset.com/work" className="text-xs opacity-20">
+        Work illustrations by Storyset
+      </a>
     </div>
   );
 };

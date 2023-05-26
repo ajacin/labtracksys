@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageLayout from "../components/router-layouts/PageLayout";
 import { useSelector } from "react-redux";
+import Button from "../components/Button";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
@@ -130,12 +131,7 @@ const CreateUser = () => {
             />
           </div>
           <div className="text-right">
-            <button
-              type="submit"
-              className="text-white rounded-md py-2 px-4 font-medium bg-primary hover:bg-secondary hover:text-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
-            >
-              Create User
-            </button>
+            <Button type="submit" text="Create User"></Button>
           </div>
         </form>
       </div>
