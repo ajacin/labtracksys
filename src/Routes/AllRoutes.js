@@ -7,6 +7,7 @@ import Test from "../pages/Test";
 import NotFound from "../pages/NotFound";
 import NewTest from "../pages/NewTest";
 import TestsLayout from "../components/router-layouts/TestsLayout";
+import Logout from "../components/Logout";
 
 function AllRoutes() {
   return (
@@ -14,6 +15,7 @@ function AllRoutes() {
       <Route path="/" element={<Home></Home>} />
       <Route path="/lab" element={<Lab></Lab>} />
       <Route path="/login" element={<Login></Login>} />
+      <Route path="/logout" element={<Logout></Logout>} />
       <Route path="/tests" element={<TestsLayout></TestsLayout>}>
         <Route index element={<Tests></Tests>} />
         <Route path=":id" element={<Test></Test>} />
