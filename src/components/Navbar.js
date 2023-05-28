@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Roles from "../constants/Roles";
+import ProtectedLink from "./ProtectedLink";
+import AdminPanel from "../pages/admin/AdminPanel";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const auth = useSelector((state) => state.authentication.auth);
+  console.log("role:", auth?.userDetails?.role);
+  const [userRole, setUserRole] = useState(auth?.userDetails?.role);
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
@@ -32,12 +39,28 @@ const Navbar = () => {
                 >
                   Tests
                 </Link>
-                <Link
+                <ProtectedLink
+                  roles={[Roles.SUPERUSER]}
+                  userRole={userRole}
                   to="/users/create"
-                  className="text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Create User
-                </Link>
+                  text="Create User"
+                  allowed
+                ></ProtectedLink>
+                <ProtectedLink
+                  roles={[Roles.SUPERUSER]}
+                  userRole={userRole}
+                  to="/superuser"
+                  text="Super"
+                  allowed
+                ></ProtectedLink>
+                <ProtectedLink
+                  roles={[Roles.SUPERUSER]}
+                  userRole={userRole}
+                  to="/admin"
+                  text="Admin"
+                  allowed
+                ></ProtectedLink>
+
                 <Link
                   to="/logout"
                   className="text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium"

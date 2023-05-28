@@ -10,6 +10,8 @@ import TestsLayout from "../components/router-layouts/TestsLayout";
 import Logout from "../components/Logout";
 import CreateUser from "../pages/CreateUser";
 import PrivateRoutes from "./PrivateRoutes";
+import AdminPanel from "../pages/admin/AdminPanel";
+import SuperUserPanel from "../pages/admin/SuperUserPanel";
 
 function AllRoutes() {
   return (
@@ -18,6 +20,8 @@ function AllRoutes() {
       <Route element={<PrivateRoutes></PrivateRoutes>}>
         <Route path="/" element={<Home></Home>} />
         <Route path="/lab" element={<Lab></Lab>} />
+        <Route path="/admin" element={<AdminPanel></AdminPanel>} />
+        <Route path="/superuser" element={<SuperUserPanel></SuperUserPanel>} />
         <Route path="/logout" element={<Logout></Logout>} />
         <Route path="/tests" element={<TestsLayout></TestsLayout>}>
           <Route index element={<Tests></Tests>} />
