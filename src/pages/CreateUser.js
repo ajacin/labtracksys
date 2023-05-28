@@ -9,6 +9,7 @@ const CreateUser = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [role, setRole] = useState("USER");
 
   const auth = useSelector((state) => state.authentication.auth);
 
@@ -22,6 +23,7 @@ const CreateUser = () => {
       password,
       firstName,
       lastName,
+      role,
     };
 
     // Send user data to the server using fetch
@@ -42,6 +44,7 @@ const CreateUser = () => {
         setPassword("");
         setFirstName("");
         setLastName("");
+        setRole("USER");
       })
       .catch((error) => {
         console.error("Error creating user:", error);
@@ -129,6 +132,22 @@ const CreateUser = () => {
               onChange={(e) => setLastName(e.target.value)}
               required
             />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="role" className="block font-medium text-gray-700">
+              Role
+            </label>
+            <select
+              id="role"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="USER">USER</option>
+              <option value="ADMIN">ADMIN</option>
+              <option value="SUPERUSER">SUPERUSER</option>
+            </select>
           </div>
           <div className="text-right">
             <Button type="submit" text="Create User"></Button>
