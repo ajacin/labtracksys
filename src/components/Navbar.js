@@ -72,6 +72,13 @@ const Navbar = () => {
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
+            <ProtectedLink
+              userRole={userRole}
+              to="/"
+              text="Home"
+              allowed
+              smallScreen
+            ></ProtectedLink>
             <button
               onClick={toggleNavbar}
               type="button"
