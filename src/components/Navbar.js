@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Roles from "../constants/Roles";
 import ProtectedLink from "./ProtectedLink";
-import AdminPanel from "../pages/admin/AdminPanel";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const auth = useSelector((state) => state.authentication.auth);
   console.log("role:", auth?.userDetails?.role);
   const [userRole, setUserRole] = useState(auth?.userDetails?.role);
+  const location = useLocation();
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
@@ -27,18 +27,19 @@ const Navbar = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link
+                <ProtectedLink
+                  userRole={userRole}
                   to="/"
-                  className="text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </Link>
-                <Link
+                  text="Home"
+                  allowed
+                ></ProtectedLink>
+                <ProtectedLink
+                  userRole={userRole}
                   to="/tests"
-                  className="text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Tests
-                </Link>
+                  text="Tests"
+                  allowed
+                ></ProtectedLink>
+
                 <ProtectedLink
                   roles={[Roles.SUPERUSER]}
                   userRole={userRole}
@@ -60,13 +61,12 @@ const Navbar = () => {
                   text="Admin"
                   allowed
                 ></ProtectedLink>
-
-                <Link
+                <ProtectedLink
+                  userRole={userRole}
                   to="/logout"
-                  className="text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Logout
-                </Link>
+                  text="Logout"
+                  allowed
+                ></ProtectedLink>
                 {/* Add more navbar links */}
               </div>
             </div>
@@ -113,30 +113,52 @@ const Navbar = () => {
       {/* Responsive navbar menu */}
       <div className={`md:hidden ${isNavbarOpen ? "block" : "hidden"}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
+          <ProtectedLink
+            userRole={userRole}
             to="/"
-            className="text-white hover:bg-primary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Home
-          </Link>
-          <Link
+            text="Home"
+            allowed
+            smallScreen
+          ></ProtectedLink>
+          <ProtectedLink
+            userRole={userRole}
             to="/tests"
-            className="text-white hover:bg-primary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Tests
-          </Link>
-          <Link
+            text="Tests"
+            allowed
+            smallScreen
+          ></ProtectedLink>
+
+          <ProtectedLink
+            roles={[Roles.SUPERUSER]}
+            userRole={userRole}
             to="/users/create"
-            className="text-white hover:bg-primary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Create User
-          </Link>
-          <Link
+            text="Create User"
+            allowed
+            smallScreen
+          ></ProtectedLink>
+          <ProtectedLink
+            roles={[Roles.SUPERUSER]}
+            userRole={userRole}
+            to="/superuser"
+            text="Super"
+            allowed
+            smallScreen
+          ></ProtectedLink>
+          <ProtectedLink
+            roles={[Roles.SUPERUSER]}
+            userRole={userRole}
+            to="/admin"
+            text="Admin"
+            allowed
+            smallScreen
+          ></ProtectedLink>
+          <ProtectedLink
+            userRole={userRole}
             to="/logout"
-            className="text-white hover:bg-primary hover:text-light block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Logout
-          </Link>
+            text="Logout"
+            allowed
+            smallScreen
+          ></ProtectedLink>
           {/* Add more responsive navbar links */}
         </div>
       </div>
