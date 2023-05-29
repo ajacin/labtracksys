@@ -12,6 +12,7 @@ import CreateUser from "../pages/CreateUser";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminPanel from "../pages/admin/AdminPanel";
 import SuperUserPanel from "../pages/admin/SuperUserPanel";
+import Users from "../pages/Users";
 
 function AllRoutes() {
   return (
@@ -29,6 +30,7 @@ function AllRoutes() {
           <Route path="new" element={<NewTest></NewTest>}></Route>
         </Route>
         <Route path="/users">
+          <Route index element={<Users></Users>} />
           <Route path="create" element={<CreateUser></CreateUser>}></Route>
         </Route>
       </Route>

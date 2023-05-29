@@ -67,6 +67,14 @@ const Navbar = () => {
                   text="Logout"
                   allowed
                 ></ProtectedLink>
+                <ProtectedLink
+                  roles={[Roles.SUPERUSER, Roles.ADMIN]}
+                  userRole={userRole}
+                  to="/users"
+                  text="Users"
+                  displayIn={["/superuser"]}
+                  allowed
+                ></ProtectedLink>
                 {/* Add more navbar links */}
               </div>
             </div>
@@ -165,6 +173,14 @@ const Navbar = () => {
             text="Logout"
             allowed
             smallScreen
+          ></ProtectedLink>
+          <ProtectedLink
+            roles={[Roles.SUPERUSER, Roles.ADMIN]}
+            userRole={userRole}
+            to="/users"
+            text="Users"
+            displayIn={["/superuser"]}
+            allowed
           ></ProtectedLink>
           {/* Add more responsive navbar links */}
         </div>

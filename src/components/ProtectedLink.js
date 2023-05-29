@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Roles from "../constants/Roles";
+// displayIn : Display a link in a specific route only. Display in all routes if this prop is not specified
 
 const ProtectedLink = ({
   children,
@@ -10,6 +11,7 @@ const ProtectedLink = ({
   text = "",
   smallScreen = false,
   allowed = true,
+  displayIn = [],
 }) => {
   const location = useLocation();
 
@@ -33,11 +35,13 @@ const ProtectedLink = ({
   };
   return (
     <>
-      {roles?.includes(userRole) && (
-        <Link to={to} className={resolveClass()}>
-          {text}
-        </Link>
-      )}
+      {(!displayIn.length ||
+        (displayIn.length > 0 && displayIn.includes(location.pathname))) &&
+        roles?.includes(userRole) && (
+          <Link to={to} className={resolveClass()}>
+            {text}
+          </Link>
+        )}
     </>
   );
 };

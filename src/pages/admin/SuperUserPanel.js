@@ -4,7 +4,7 @@ import PageLayout from "../../components/router-layouts/PageLayout";
 const SuperUserPanel = () => {
   return (
     <>
-      <PageLayout></PageLayout>
+      <PageLayout>Super</PageLayout>
     </>
   );
 };
