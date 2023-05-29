@@ -40,7 +40,10 @@ const CreateUser = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("User created:", data);
-        toast("User created");
+        toast.success("User created!", {
+          position: toast.POSITION.TOP_CENTER,
+          theme: "colored",
+        });
         // Reset form fields after successful submission
         setUsername("");
         setEmail("");
@@ -50,7 +53,11 @@ const CreateUser = () => {
         setRole("USER");
       })
       .catch((error) => {
-        toast(error);
+        toast.error("User creation failed!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: false,
+          theme: "colored",
+        });
         console.error("Error creating user:", error);
       });
   };
