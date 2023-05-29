@@ -8,7 +8,7 @@ const ProtectedLink = ({
   roles = [Roles.USER, Roles.ADMIN, Roles.SUPERUSER],
   to = "/",
   text = "",
-  smallScreen = true,
+  smallScreen = false,
   allowed = true,
 }) => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const ProtectedLink = ({
           "text-white hover:bg-primary hover:text-light block px-3 py-2 rounded-md text-base font-medium";
     } else if (to === location.pathname) {
       classNames =
-        "bg-primary text-light px-3 py-2 rounded-md text-sm font-medium";
+        "border border-primary text-light hover:bg-primary  px-3 py-2 rounded-md text-sm font-medium";
     } else
       classNames =
         "text-white hover:bg-primary hover:text-light px-3 py-2 rounded-md text-sm font-medium ";
