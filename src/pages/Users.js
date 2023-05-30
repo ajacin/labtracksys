@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PageLayout from "../components/router-layouts/PageLayout";
 import UserList from "../components/UserList";
 import { useSelector } from "react-redux";
-import { async } from "q";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
