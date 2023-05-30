@@ -38,13 +38,13 @@ const Navbar = () => {
                   allowed
                 ></ProtectedLink>
 
-                <ProtectedLink
+                {/* <ProtectedLink
                   roles={[Roles.SUPERUSER]}
                   userRole={userRole}
                   to="/users/create"
                   text="Create User"
                   allowed
-                ></ProtectedLink>
+                ></ProtectedLink> */}
                 <ProtectedLink
                   roles={[Roles.SUPERUSER]}
                   userRole={userRole}
@@ -65,14 +65,14 @@ const Navbar = () => {
                   text="Logout"
                   allowed
                 ></ProtectedLink>
-                <ProtectedLink
+                {/* <ProtectedLink
                   roles={[Roles.SUPERUSER, Roles.ADMIN]}
                   userRole={userRole}
                   to="/users"
                   text="Users"
                   displayIn={["/superuser"]}
                   allowed
-                ></ProtectedLink>
+                ></ProtectedLink> */}
                 {/* Add more navbar links */}
               </div>
             </div>
@@ -141,14 +141,14 @@ const Navbar = () => {
             smallScreen
           ></ProtectedLink>
 
-          <ProtectedLink
+          {/* <ProtectedLink
             roles={[Roles.SUPERUSER]}
             userRole={userRole}
             to="/users/create"
             text="Create User"
             allowed
             smallScreen
-          ></ProtectedLink>
+          ></ProtectedLink> */}
           <ProtectedLink
             roles={[Roles.SUPERUSER]}
             userRole={userRole}
@@ -172,14 +172,14 @@ const Navbar = () => {
             allowed
             smallScreen
           ></ProtectedLink>
-          <ProtectedLink
+          {/* <ProtectedLink
             roles={[Roles.SUPERUSER, Roles.ADMIN]}
             userRole={userRole}
             to="/users"
             text="Users"
             displayIn={["/superuser"]}
             allowed
-          ></ProtectedLink>
+          ></ProtectedLink> */}
           {/* Add more responsive navbar links */}
         </div>
       </div>
