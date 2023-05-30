@@ -45,8 +45,8 @@ const Users = () => {
 
   const handleDelete = async (userId) => {
     // Handle delete action
-    console.log(`Deleting user with ID ${userId}`);
     try {
+      toast(`Deleting user`);
       const response = await fetch(
         process.env.REACT_APP_API_URL + `/users/${userId}`,
         {
