@@ -20,7 +20,7 @@ function PageLayout({ children }) {
   }, []);
 
   return (
-    <div className="bg-gray-200">
+    <div className=" h-screen overflow-scroll">
       {/* Navbar */}
       <Navbar></Navbar>
       {/* Main Content */}

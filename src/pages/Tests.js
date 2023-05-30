@@ -4,7 +4,7 @@ import Test from "./Test";
 import PageLayout from "../components/router-layouts/PageLayout";
 
 function Tests() {
-  return <div>Tests</div>;
+  return <div className="">Tests</div>;
 }
 
 export default Tests;

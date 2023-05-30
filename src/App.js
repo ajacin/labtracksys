@@ -5,11 +5,7 @@ import AllRoutes from "./Routes/AllRoutes";
 const App = () => {
   const location = useLocation();
   console.log(location);
-  return (
-    <>
-      <AllRoutes></AllRoutes>
-    </>
-  );
+  return <AllRoutes></AllRoutes>;
 };
 
 export default App;

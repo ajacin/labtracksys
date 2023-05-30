@@ -14,7 +14,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:4000/users/", {
+      const response = await fetch(process.env.REACT_APP_API_URL + "/users/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -77,8 +77,8 @@ const Users = () => {
 
   return (
     <PageLayout>
-      <div className="flex flex-col p-2 gap-1 flex-grow">
-        <div className="border border-gray-300 mx-2">[Search users ]</div>
+      <div className="flex flex-col p-2 gap-1">
+        <div className="border border-gray-300 mx-2">[Search users]</div>
         <UserList
           users={users}
           onEdit={handleEdit}

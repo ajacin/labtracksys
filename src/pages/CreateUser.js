@@ -29,7 +29,7 @@ const CreateUser = () => {
     };
 
     // Send user data to the server using fetch
-    fetch("http://localhost:4000/users/create", {
+    fetch(process.env.REACT_APP_API_URL + "/users/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
