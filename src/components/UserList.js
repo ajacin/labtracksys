@@ -15,15 +15,12 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
             <h3 class="text-xl font-bold leading-none text-secondary dark:text-white">
               Users
             </h3>
-            <a class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+            <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
               View all {users?.length ?? ""} users
-            </a>
+            </p>
           </div>
           <div class="flow-root overflow-scroll">
-            <ul
-              role="list"
-              class="divide-y divide-primary dark:divide-gray-700 max-h-96 overflow-scroll"
-            >
+            <ul class="divide-y divide-primary dark:divide-gray-700 max-h-96 overflow-scroll">
               {users?.map((user) => {
                 return (
                   <li

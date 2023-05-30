@@ -16,7 +16,7 @@ const Login = () => {
     if (auth.message === "authenticated") {
       navigate("/");
     }
-  }, []);
+  }, [auth.message]);
 
   const handleEmailChange = (e) => {
     setUserName(e.target.value);
@@ -108,12 +108,9 @@ const Login = () => {
                 text="Sign In"
                 variant={"secondary"}
               ></Button>
-              <a
-                className="inline-block align-baseline font-bold text-sm text-slate-700 hover:text-slate-600"
-                href="#"
-              >
+              <p className="inline-block align-baseline font-bold text-sm text-slate-700 hover:text-slate-600">
                 Forgot Password?
-              </a>
+              </p>
             </div>
           </form>
         </div>
