@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import SelectedUser from "./SelectedUser";
 import { FaTrashAlt, FaUserEdit } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
 const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
-  const [selectedUser, setSelectedUser] = useState(users[0]);
-  useEffect(() => {
-    setSelectedUser(users[0]);
-  }, [users]);
+  //   const [selectedUser, setSelectedUser] = useState(users[0]);
+  //   useEffect(() => {
+  //     setSelectedUser(users[0]);
+  //   }, [users]);
 
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
@@ -27,7 +27,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
                 return (
                   <li
                     class="py-3 sm:py-4 px-2"
-                    onClick={() => setSelectedUser(user)}
+                    // onClick={() => setSelectedUser(user)}
                   >
                     <div class="flex items-center space-x-4">
                       <div class="flex-shrink-0">
