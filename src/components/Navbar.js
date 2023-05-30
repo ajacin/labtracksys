@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
 import Roles from "../constants/Roles";
 import ProtectedLink from "./ProtectedLink";
 
@@ -8,8 +7,7 @@ const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const auth = useSelector((state) => state.authentication.auth);
   console.log("role:", auth?.userDetails?.role);
-  const [userRole, setUserRole] = useState(auth?.userDetails?.role);
-  const location = useLocation();
+  const [userRole] = useState(auth?.userDetails?.role);
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);

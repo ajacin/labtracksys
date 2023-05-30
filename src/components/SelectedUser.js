@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Button from "./Button";
 
 const SelectedUser = ({ selectedUser = [], onDelete }) => {

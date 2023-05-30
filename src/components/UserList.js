@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Button";
 import SelectedUser from "./SelectedUser";
 
 const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
   const [selectedUser, setSelectedUser] = useState(users[0]);
   useEffect(() => {
     setSelectedUser(users[0]);
-  }, []);
+  }, [users]);
 
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
@@ -16,10 +15,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
             <h3 class="text-xl font-bold leading-none text-secondary dark:text-white">
               Users
             </h3>
-            <a
-              href="#"
-              class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-            >
+            <a class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
               View all {users?.length ?? ""} users
             </a>
           </div>
