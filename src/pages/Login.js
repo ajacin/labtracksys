@@ -16,7 +16,7 @@ const Login = () => {
     if (auth.message === "authenticated") {
       navigate("/");
     }
-  }, [auth.message]);
+  }, [auth.message, navigate]);
 
   const handleEmailChange = (e) => {
     setUserName(e.target.value);

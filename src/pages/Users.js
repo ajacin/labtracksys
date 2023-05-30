@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PageLayout from "../components/router-layouts/PageLayout";
 import UserList from "../components/UserList";
 import { useSelector } from "react-redux";
@@ -7,11 +7,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const auth = useSelector((state) => state.authentication.auth);
 
-  useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
-
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const response = await fetch(process.env.REACT_APP_API_URL + "/users/", {
         method: "GET",
@@ -35,7 +31,12 @@ const Users = () => {
       // Handle fetch error
       console.error("Error fetching users:", error);
     }
-  };
+  }, [setUsers, auth.token]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
   const handleEdit = (userId) => {
     // Handle edit action
     console.log(`Editing user with ID ${userId}`);
