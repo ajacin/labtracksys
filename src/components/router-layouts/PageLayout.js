@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 
 function PageLayout({ children }) {
-  const loc = useLocation();
-  const [location, setLocation] = useState(useLocation());
   const navigate = useNavigate();
   const auth = useSelector((state) => state.authentication.auth);
 
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-
-  const toggleNavbar = () => {
-    setIsNavbarOpen(!isNavbarOpen);
-  };
-
   useEffect(() => {
     if (auth.message !== "authenticated") navigate("/login");
-  }, []);
+  }, [auth.message, navigate]);
 
   return (
     <div className=" h-screen overflow-scroll">

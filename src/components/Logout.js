@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { unAuthenticate } from "../features/authentication/authenticationSlice";
 import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
-  const auth = useSelector((state) => state.authentication.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -12,7 +11,7 @@ const Logout = () => {
     dispatch(unAuthenticate());
     navigate("/login");
     console.log("end of");
-  }, []);
+  }, [dispatch, navigate]);
 
   return <div>Logout</div>;
 };
