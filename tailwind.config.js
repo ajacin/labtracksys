@@ -17,6 +17,10 @@ module.exports = {
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
+      success: "#B1E052",
+      warning: "#F3C459",
+      error: "#E93F2F",
+      disabled: "#ccc",
     },
     extend: {
       backgroundImage: {

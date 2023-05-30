@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import PageLayout from "../components/router-layouts/PageLayout";
 import UserList from "../components/UserList";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -46,19 +47,22 @@ const Users = () => {
     // Handle delete action
     console.log(`Deleting user with ID ${userId}`);
     try {
-      const response = await fetch(`http://localhost:4000/users/${userId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": auth.token,
-        },
-        //   body: JSON.stringify({
-        //     role: "USER",
-        //   }),
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + `/users/${userId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": auth.token,
+          },
+          //   body: JSON.stringify({
+          //     role: "USER",
+          //   }),
+        }
+      );
 
       if (response.ok) {
-        console.log("deleted user");
+        toast.success("Deleted user");
         fetchUsers();
       } else {
         // Handle error response

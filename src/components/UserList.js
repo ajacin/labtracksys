@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SelectedUser from "./SelectedUser";
+// import SelectedUser from "./SelectedUser";
+import { FaTrashAlt, FaUserEdit } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
   const [selectedUser, setSelectedUser] = useState(users[0]);
@@ -9,22 +11,22 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
-      <div class="my-2 w-full md:w-96">
+      <div class="my-2 w-full">
         <div class="rounded-lg border shadow-md p-2">
           <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold leading-none text-secondary dark:text-white">
               Users
             </h3>
             <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-              View all {users?.length ?? ""} users
+              {users?.length ?? ""} users
             </p>
           </div>
           <div class="flow-root overflow-scroll">
-            <ul class="divide-y divide-primary dark:divide-gray-700 max-h-96 overflow-scroll">
+            <ul class="divide-y divide-gray-300 overflow-scroll">
               {users?.map((user) => {
                 return (
                   <li
-                    class="py-3 sm:py-4"
+                    class="py-3 sm:py-4 px-2"
                     onClick={() => setSelectedUser(user)}
                   >
                     <div class="flex items-center space-x-4">
@@ -43,16 +45,29 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
                           {`${user.email}`}
                         </p>
                       </div>
-                      {/* <div class="inline-flex items-center text-base font-semibold text-secondary dark:text-white">
+                      <div>
+                        <FaUserEdit className="text-warning text-xl" />
+                      </div>
+                      <div>
                         {user.role !== "SUPERUSER" && (
-                          <p
-                            className="text-xs md:text-base"
+                          <div
+                            className="text-xs md:text-base cursor-pointer"
                             onClick={() => onDelete(user.id)}
                           >
-                            Delete
-                          </p>
+                            <FaTrashAlt className="text-emerald text-xl" />
+                          </div>
                         )}
-                      </div> */}
+                        {user.role === "SUPERUSER" && (
+                          <div
+                            className="text-xs md:text-base cursor-pointer"
+                            onClick={() =>
+                              onDelete(toast.warn("Cannot delete a super user"))
+                            }
+                          >
+                            <FaTrashAlt className="text-disabled text-xl" />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </li>
                 );
@@ -61,10 +76,11 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
           </div>
         </div>
       </div>
-      <SelectedUser
+      {/* <SelectedUser
         selectedUser={selectedUser}
         onDelete={onDelete}
-      ></SelectedUser>
+      ></SelectedUser> */}
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
