@@ -1,6 +1,6 @@
 import React from "react";
 import PageLayout from "../../components/router-layouts/PageLayout";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaClinicMedical } from "react-icons/fa";
 import PanelButton from "../../components/PanelButton";
 import Panel from "../../components/Panel";
 
@@ -11,6 +11,9 @@ const SuperUserPanel = () => {
         <Panel>
           <PanelButton to="/users" text="Users">
             <FaUserAlt className="text-secondary" />
+          </PanelButton>
+          <PanelButton to="/tests" text="Tests">
+            <FaClinicMedical className="text-error"></FaClinicMedical>
           </PanelButton>
         </Panel>
       </PageLayout>
