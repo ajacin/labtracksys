@@ -21,8 +21,8 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
               {users?.length ?? ""} users
             </p>
           </div>
-          <div class="flow-root overflow-scroll">
-            <ul class="divide-y divide-gray-300 overflow-scroll">
+          <div class="flow-root">
+            <ul class="divide-y divide-gray-300 h-96 overflow-scroll">
               {users?.map((user) => {
                 return (
                   <li
