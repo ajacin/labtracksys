@@ -13,7 +13,7 @@ module.exports = {
       dark: "#000505",
       black: colors.black,
       white: colors.white,
-      gray: colors.gray,
+      gray: "#6B7F82",
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
@@ -25,6 +25,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         hero: "url('/src/assets/images/bg-science.svg')",
+      },
+      spacing: {
+        128: "32rem",
       },
     },
   },

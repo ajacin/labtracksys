@@ -22,7 +22,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
             </p>
           </div>
           <div class="flow-root">
-            <ul class="divide-y divide-gray-300 h-96 overflow-scroll">
+            <ul class="divide-y divide-gray-300 h-128 overflow-scroll">
               {users?.map((user) => {
                 return (
                   <li
@@ -46,7 +46,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
                         </p>
                       </div>
                       <div>
-                        <FaUserEdit className="text-warning text-xl" />
+                        <FaUserEdit className="text-dark text-xl" />
                       </div>
                       <div>
                         {user.role !== "SUPERUSER" && (
@@ -54,7 +54,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
                             className="text-xs md:text-base cursor-pointer"
                             onClick={() => onDelete(user.id)}
                           >
-                            <FaTrashAlt className="text-emerald text-xl" />
+                            <FaTrashAlt className="text-error text-xl" />
                           </div>
                         )}
                         {user.role === "SUPERUSER" && (

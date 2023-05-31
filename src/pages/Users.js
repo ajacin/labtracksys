@@ -3,6 +3,10 @@ import PageLayout from "../components/router-layouts/PageLayout";
 import UserList from "../components/UserList";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Panel from "../components/Panel";
+import PanelButton from "../components/PanelButton";
+import { FaUserPlus } from "react-icons/fa";
+import SearchUsers from "../components/SearchUsers";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -82,7 +86,15 @@ const Users = () => {
   return (
     <PageLayout>
       <div className="flex flex-col p-2 gap-1">
-        <div className="border border-gray-300 mx-2">[Search users]</div>
+        <Panel>
+          <PanelButton to="/users/create" text="Create">
+            <FaUserPlus className="text-secondary" />
+          </PanelButton>
+        </Panel>
+        <div className=" w-full flex justify-end">
+          <SearchUsers></SearchUsers>
+        </div>
+
         <UserList
           users={users}
           onEdit={handleEdit}
