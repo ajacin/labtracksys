@@ -26,7 +26,7 @@ const UserList = ({ users = [], onEdit, onDelete, onDisable }) => {
               {users?.map((user) => {
                 return (
                   <li
-                    class="py-3 sm:py-4 px-2"
+                    class="py-3 sm:py-4 px-2 md:px-4"
                     // onClick={() => setSelectedUser(user)}
                   >
                     <div class="flex items-center space-x-4">
