@@ -71,8 +71,8 @@ const CreateTest = () => {
 
   return (
     <>
-      <PageLayout>
-        <div className="w-screen">
+      <PageLayout className="border-xl">
+        <div className="w-screen p-4">
           <h2 className="text-2xl font-semibold mb-4">Create a Test</h2>
           <form onSubmit={handleSubmit} className="flex gap-1 flex-wrap">
             <TextInputField
@@ -239,7 +239,8 @@ const CreateTest = () => {
                 setFormData((old) => ({ ...old, resultStrings: val }))
               }
             ></TextInputField>
-            <div className="text-right">
+            <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0"></div>
+            <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <Button type="submit" text="Create"></Button>
             </div>
           </form>
