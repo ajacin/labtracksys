@@ -6,13 +6,14 @@ import Tests from "../pages/Tests";
 import Test from "../pages/Test";
 import NotFound from "../pages/NotFound";
 import NewTest from "../pages/NewTest";
-import TestsLayout from "../components/router-layouts/TestsLayout";
+// import TestsLayout from "../components/router-layouts/TestsLayout";
 import Logout from "../components/Logout";
 import CreateUser from "../pages/CreateUser";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminPanel from "../pages/admin/AdminPanel";
 import SuperUserPanel from "../pages/admin/SuperUserPanel";
 import Users from "../pages/Users";
+import CreateTest from "../pages/CreateTest";
 
 function AllRoutes() {
   return (
@@ -24,9 +25,11 @@ function AllRoutes() {
         <Route path="/admin" element={<AdminPanel></AdminPanel>} />
         <Route path="/superuser" element={<SuperUserPanel></SuperUserPanel>} />
         <Route path="/logout" element={<Logout></Logout>} />
-        <Route path="/tests" element={<TestsLayout></TestsLayout>}>
+        {/* <Route path="/tests" element={<TestsLayout></TestsLayout>}> */}
+        <Route path="/tests">
           <Route index element={<Tests></Tests>} />
           <Route path=":id" element={<Test></Test>} />
+          <Route path="create" element={<CreateTest></CreateTest>}></Route>
           <Route path="new" element={<NewTest></NewTest>}></Route>
         </Route>
         <Route path="/users">

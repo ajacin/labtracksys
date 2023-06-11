@@ -77,13 +77,13 @@ const SelectedUser = ({ selectedUser = [], onDelete }) => {
       {/* <h2 className="text-2xl font-semibold mb-4">Create a New User</h2> */}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="username" className="block font-medium text-gray-700">
+          <label htmlFor="username" className="block font-medium text-gray">
             Username
           </label>
           <input
             type="text"
             id="username"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.username}
             onChange={(e) =>
               setFormData((old) => {
@@ -94,13 +94,13 @@ const SelectedUser = ({ selectedUser = [], onDelete }) => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block font-medium text-gray-700">
+          <label htmlFor="email" className="block font-medium text-gray">
             Email
           </label>
           <input
             type="email"
             id="email"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.email}
             onChange={(e) =>
               setFormData((old) => {
@@ -111,29 +111,26 @@ const SelectedUser = ({ selectedUser = [], onDelete }) => {
           />
         </div>
         {/* <div className="mb-4">
-          <label htmlFor="password" className="block font-medium text-gray-700">
+          <label htmlFor="password" className="block font-medium text-gray">
             Password
           </label>
           <input
             type="password"
             id="password"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div> */}
         <div className="mb-4">
-          <label
-            htmlFor="firstName"
-            className="block font-medium text-gray-700"
-          >
+          <label htmlFor="firstName" className="block font-medium text-gray">
             First Name
           </label>
           <input
             type="text"
             id="firstName"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.firstName}
             onChange={(e) =>
               setFormData((old) => {
@@ -144,13 +141,13 @@ const SelectedUser = ({ selectedUser = [], onDelete }) => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="lastName" className="block font-medium text-gray-700">
+          <label htmlFor="lastName" className="block font-medium text-gray">
             Last Name
           </label>
           <input
             type="text"
             id="lastName"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.lastName}
             onChange={(e) =>
               setFormData((old) => {
@@ -161,12 +158,12 @@ const SelectedUser = ({ selectedUser = [], onDelete }) => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="role" className="block font-medium text-gray-700">
+          <label htmlFor="role" className="block font-medium text-gray">
             Role
           </label>
           <select
             id="role"
-            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-teal-500 focus:border-teal-500"
+            className="w-full border border-dark rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
             value={formData.role}
             onChange={(e) =>
               setFormData((old) => {
