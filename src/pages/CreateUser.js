@@ -65,84 +65,99 @@ const CreateUser = () => {
   return (
     <>
       <PageLayout>
-        <div className="max-w-lg mx-auto p-2">
-          <h2 className="text-2xl font-semibold mb-4">Create a New User</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="username" className="block font-medium text-gray">
+        <div className="w-screen p-4">
+          <h2 className="text-2xl font-semibold mb-4">CREATE A USER</h2>
+          <form onSubmit={handleSubmit} className="flex gap-1 flex-wrap">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="username"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
                 Username
               </label>
               <input
                 type="text"
                 id="username"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block font-medium text-gray">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="email"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="password" className="block font-medium text-gray">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="password"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-4">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label
                 htmlFor="firstName"
-                className="block font-medium text-gray"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               >
                 First Name
               </label>
               <input
                 type="text"
                 id="firstName"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="lastName" className="block font-medium text-gray">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="lastName"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
                 Last Name
               </label>
               <input
                 type="text"
                 id="lastName"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="role" className="block font-medium text-gray">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="role"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
                 Role
               </label>
               <select
                 id="role"
-                className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-secondary focus:border-secondary"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 required
@@ -152,8 +167,9 @@ const CreateUser = () => {
                 <option value="SUPERUSER">SUPERUSER</option>
               </select>
             </div>
-            <div className="text-right">
-              <Button type="submit" text="Create User"></Button>
+            <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0"></div>
+            <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <Button type="submit" text="Create"></Button>
             </div>
           </form>
         </div>

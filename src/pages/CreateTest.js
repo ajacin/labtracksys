@@ -73,7 +73,7 @@ const CreateTest = () => {
     <>
       <PageLayout className="border-xl">
         <div className="w-screen p-4">
-          <h2 className="text-2xl font-semibold mb-4">Create a Test</h2>
+          <h2 className="text-2xl font-semibold mb-4">CREATE A TEST</h2>
           <form onSubmit={handleSubmit} className="flex gap-1 flex-wrap">
             <TextInputField
               label="Name"
