@@ -6,21 +6,19 @@ import Panel from "../../components/Panel";
 
 const SuperUserPanel = () => {
   return (
-    <>
-      <PageLayout>
-        <Panel>
-          <PanelButton to="/users" text="Users">
-            <FaUserAlt className="text-secondary" />
-          </PanelButton>
-          <PanelButton to="/tests" text="Tests">
-            <FaClinicMedical className="text-error"></FaClinicMedical>
-          </PanelButton>
-          <PanelButton to="/testgroups" text="Test Groups">
-            <FaClinicMedical className="text-error"></FaClinicMedical>
-          </PanelButton>
-        </Panel>
-      </PageLayout>
-    </>
+    <PageLayout>
+      <Panel>
+        <PanelButton to="/users" text="Users">
+          <FaUserAlt className="text-secondary" />
+        </PanelButton>
+        <PanelButton to="/tests" text="Tests">
+          <FaClinicMedical className="text-error"></FaClinicMedical>
+        </PanelButton>
+        <PanelButton to="/testgroups" text="Test Groups">
+          <FaClinicMedical className="text-error"></FaClinicMedical>
+        </PanelButton>
+      </Panel>
+    </PageLayout>
   );
 };
 
