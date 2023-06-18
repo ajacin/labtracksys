@@ -15,6 +15,9 @@ const SuperUserPanel = () => {
           <PanelButton to="/tests" text="Tests">
             <FaClinicMedical className="text-error"></FaClinicMedical>
           </PanelButton>
+          <PanelButton to="/testgroups" text="Test Groups">
+            <FaClinicMedical className="text-error"></FaClinicMedical>
+          </PanelButton>
         </Panel>
       </PageLayout>
     </>

@@ -5,42 +5,45 @@ import Panel from "../components/Panel";
 import PanelButton from "../components/PanelButton";
 import { FaRegPlusSquare } from "react-icons/fa";
 import SearchUsers from "../components/SearchUsers";
-import TestList from "../components/TestList";
+import TestGroupsList from "../components/TestGroupsList";
 import PageLayout from "../components/router-layouts/PageLayout";
 
-const Tests = () => {
-  const [tests, setTests] = useState([]);
+const TestGroups = () => {
+  const [testgroups, setTestGroups] = useState([]);
   const auth = useSelector((state) => state.authentication.auth);
 
-  const fetchTests = useCallback(async () => {
+  const fetchTestGroups = useCallback(async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL + "/tests/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": auth.token,
-        },
-        //   body: JSON.stringify({
-        //     role: "USER",
-        //   }),
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/testgroups/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": auth.token,
+          },
+          //   body: JSON.stringify({
+          //     role: "USER",
+          //   }),
+        }
+      );
 
       if (response.ok) {
         const testsJson = await response.json();
-        setTests(testsJson?.data);
+        setTestGroups(testsJson?.data);
       } else {
         // Handle error response
-        console.error("Failed to fetch tests:", response.statusText);
+        console.error("Failed to fetch testgroups:", response.statusText);
       }
     } catch (error) {
       // Handle fetch error
-      console.error("Error fetching tests:", error);
+      console.error("Error fetching testgroups:", error);
     }
-  }, [setTests, auth.token]);
+  }, [setTestGroups, auth.token]);
 
   useEffect(() => {
-    fetchTests();
-  }, [fetchTests]);
+    fetchTestGroups();
+  }, [fetchTestGroups]);
 
   const handleEdit = (testId) => {
     // Handle edit action
@@ -52,7 +55,7 @@ const Tests = () => {
     try {
       toast(`Deleting test`);
       const response = await fetch(
-        process.env.REACT_APP_API_URL + `/tests/${testId}`,
+        process.env.REACT_APP_API_URL + `/testgroups/${testId}`,
         {
           method: "DELETE",
           headers: {
@@ -67,14 +70,14 @@ const Tests = () => {
 
       if (response.ok) {
         toast.success("Test deleted");
-        fetchTests();
+        fetchTestGroups();
       } else {
         // Handle error response
-        console.error("Failed to fetch tests:", response.statusText);
+        console.error("Failed to fetch testgroups:", response.statusText);
       }
     } catch (error) {
       // Handle fetch error
-      console.error("Error fetching tests:", error);
+      console.error("Error fetching testgroups:", error);
     }
   };
 
@@ -87,16 +90,15 @@ const Tests = () => {
     <PageLayout>
       <div className="flex flex-col p-2 gap-1">
         <Panel>
-          <PanelButton to="/tests/create" text="Create">
+          <PanelButton to="/testgroups/create" text="Create">
             <FaRegPlusSquare className="text-secondary" />
           </PanelButton>
         </Panel>
         <div className=" w-full flex justify-end">
           <SearchUsers></SearchUsers>
         </div>
-
-        <TestList
-          tests={tests}
+        <TestGroupsList
+          testGroups={testgroups}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onDisable={handleDisable}
@@ -106,4 +108,4 @@ const Tests = () => {
   );
 };
 
-export default Tests;
+export default TestGroups;
