@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Roles from "../constants/Roles";
 import ProtectedLink from "./ProtectedLink";
+import { FaHome } from "react-icons/fa";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -77,14 +78,16 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
+          <div className="-mr-2 flex md:hidden items-center">
             <ProtectedLink
               userRole={userRole}
               to="/"
               text="Home"
               allowed
               smallScreen
-            ></ProtectedLink>
+            >
+              <FaHome className="text-lg" />
+            </ProtectedLink>
             <button
               onClick={toggleNavbar}
               type="button"
