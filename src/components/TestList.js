@@ -2,6 +2,7 @@ import React from "react";
 // import SelectedUser from "./SelectedUser";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
+import { BiUserCircle } from "react-icons/bi";
 
 const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
   //   const [selectedUser, setSelectedUser] = useState(tests[0]);
@@ -38,11 +39,9 @@ const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
                           {`${test.description}`}
                         </p>
                       </div>
-                      <div class="hidden md:flex md:flex-1 md:flex-col min-w-0">
-                        <p class="text-sm font-medium text-secondary truncate dark:text-white">
-                          {`Created By`}
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                      <div class="flex flex-col w-20">
+                        <p class="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
+                          <BiUserCircle className="text-secondary" />
                           {`${test.createdBy}`}
                         </p>
                       </div>

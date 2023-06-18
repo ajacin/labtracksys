@@ -1,6 +1,7 @@
 import React from "react";
 // import SelectedUser from "./SelectedUser";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
+import { BiTestTube, BiUserCircle } from "react-icons/bi";
 import { ToastContainer } from "react-toastify";
 
 const TestList = ({ testGroups = [], onEdit, onDelete, onDisable }) => {
@@ -18,7 +19,7 @@ const TestList = ({ testGroups = [], onEdit, onDelete, onDisable }) => {
               Test Groups
             </h3>
             <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-              {testGroups?.length ?? ""} testGroups
+              {testGroups?.length ?? ""} Groups
             </p>
           </div>
           <div class="flow-root">
@@ -38,12 +39,16 @@ const TestList = ({ testGroups = [], onEdit, onDelete, onDisable }) => {
                           {`${group.description}`}
                         </p>
                       </div>
-                      <div class="hidden md:flex md:flex-1 md:flex-col min-w-0">
-                        <p class="text-sm font-medium text-secondary truncate dark:text-white">
-                          {`Created By`}
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                      <div class="flex flex-col w-20">
+                        <p class="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
+                          <BiUserCircle className="text-secondary" />
                           {`${group.createdBy}`}
+                        </p>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
+                          <BiTestTube className="text-secondary" />{" "}
+                          {`${group.testIds?.length}`}
                         </p>
                       </div>
                       <div>
