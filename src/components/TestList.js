@@ -42,7 +42,7 @@ const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
                       <div class="flex flex-col w-20">
                         <p class="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
                           <BiUserCircle className="text-secondary" />
-                          {`${test.createdBy}`}
+                          {`${test.createdBy ? test.createdBy : "System"}`}
                         </p>
                       </div>
                       <div>
