@@ -76,3 +76,7 @@ npm i react-router-dom
 ### Redux Persists
 
 yarn add redux-persist
+
+### React Select
+
+https://www.npmjs.com/package/react-select to implement select components

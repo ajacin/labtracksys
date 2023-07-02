@@ -20,13 +20,13 @@ const ProtectedLink = ({
     if (smallScreen) {
       if (to === location.pathname)
         classNames =
-          " border border-primary text-light block px-3 py-2 rounded-md text-base font-medium ";
+          "border-b border-primary text-light block px-3 py-2 text-base font-medium ";
       else
         classNames =
           "text-white hover:bg-primary hover:text-dark block px-3 py-2 rounded-md text-base font-medium ";
     } else if (to === location.pathname) {
       classNames =
-        "border border-primary text-light hover:bg-primary hover:text-dark  px-3 py-2 rounded-md text-sm font-medium ";
+        "border-b border-primary text-light hover:bg-primary hover:text-dark  px-3 py-2 text-sm font-medium ";
     } else
       classNames =
         "text-white hover:bg-primary hover:text-dark px-3 py-2 rounded-md text-sm font-medium ";

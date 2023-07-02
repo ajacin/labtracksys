@@ -14,6 +14,7 @@ import AdminPanel from "../pages/admin/AdminPanel";
 import SuperUserPanel from "../pages/admin/SuperUserPanel";
 import Users from "../pages/Users";
 import CreateTest from "../pages/CreateTest";
+import CreateTestGroup from "../pages/CreateTestGroup";
 import TestGroups from "../pages/TestGroups";
 
 function AllRoutes() {
@@ -36,7 +37,10 @@ function AllRoutes() {
         <Route path="/testgroups">
           <Route index element={<TestGroups></TestGroups>} />
           <Route path=":id" element={<Test></Test>} />
-          <Route path="create" element={<CreateTest></CreateTest>}></Route>
+          <Route
+            path="create"
+            element={<CreateTestGroup></CreateTestGroup>}
+          ></Route>
           <Route path="new" element={<NewTest></NewTest>}></Route>
         </Route>
         <Route path="/users">
