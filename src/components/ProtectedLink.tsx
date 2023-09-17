@@ -1,9 +1,19 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Roles from "../constants/Roles";
-// displayIn : Display a link in a specific route only. Display in all routes if this prop is not specified
 
-const ProtectedLink = ({
+interface ProtectedLinkProps {
+  children?: React.ReactNode;
+  userRole: string;
+  roles?: string[];
+  to?: string;
+  text?: string;
+  smallScreen?: boolean;
+  allowed?: boolean;
+  displayIn?: string[];
+}
+
+const ProtectedLink: React.FC<ProtectedLinkProps> = ({
   children,
   userRole,
   roles = [Roles.USER, Roles.ADMIN, Roles.SUPERUSER],
@@ -33,6 +43,7 @@ const ProtectedLink = ({
 
     return classNames;
   };
+
   return (
     <>
       {(!displayIn.length ||

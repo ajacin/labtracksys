@@ -16,8 +16,11 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-export default configureStore({
+const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== "production", //to learn
   middleware: [thunk],
 });
+export default store;
+
+export type RootState = ReturnType<typeof store.getState>;

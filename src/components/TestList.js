@@ -28,6 +28,7 @@ const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
                 return (
                   <li
                     class="py-3 sm:py-4 px-2 md:px-4"
+                    key={test.name}
                     // onClick={() => setSelectedUser(test)}
                   >
                     <div class="flex items-center space-x-4">
