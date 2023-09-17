@@ -47,20 +47,20 @@ const Navbar = () => {
                   text="Create User"
                   allowed
                 ></ProtectedLink> */}
-                <ProtectedLink
+                {/* <ProtectedLink
                   roles={[Roles.SUPERUSER]}
                   userRole={userRole}
                   to="/superuser"
                   text="Super"
                   allowed
-                ></ProtectedLink>
-                <ProtectedLink
+                ></ProtectedLink> */}
+                {/* <ProtectedLink
                   roles={[Roles.SUPERUSER]}
                   userRole={userRole}
                   to="/admin"
                   text="Admin"
                   allowed
-                ></ProtectedLink>
+                ></ProtectedLink> */}
                 <ProtectedLink
                   userRole={userRole}
                   to="/logout"
@@ -153,7 +153,7 @@ const Navbar = () => {
             allowed
             smallScreen
           ></ProtectedLink> */}
-          <ProtectedLink
+          {/* <ProtectedLink
             roles={[Roles.SUPERUSER]}
             userRole={userRole}
             to="/superuser"
@@ -168,7 +168,7 @@ const Navbar = () => {
             text="Admin"
             allowed
             smallScreen
-          ></ProtectedLink>
+          ></ProtectedLink> */}
           <ProtectedLink
             userRole={userRole}
             to="/logout"
