@@ -7,40 +7,12 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import SearchUsers from "../components/SearchUsers";
 import TestList from "../components/TestList";
 import PageLayout from "../components/router-layouts/PageLayout";
-
+import useFetchData from "../hooks/generic/useFetch";
 const Tests = () => {
   const [tests, setTests] = useState([]);
   const auth = useSelector((state) => state.authentication.auth);
 
-  const fetchTests = useCallback(async () => {
-    try {
-      const response = await fetch(process.env.REACT_APP_API_URL + "/tests/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": auth.token,
-        },
-        //   body: JSON.stringify({
-        //     role: "USER",
-        //   }),
-      });
-
-      if (response.ok) {
-        const testsJson = await response.json();
-        setTests(testsJson?.data);
-      } else {
-        // Handle error response
-        console.error("Failed to fetch tests:", response.statusText);
-      }
-    } catch (error) {
-      // Handle fetch error
-      console.error("Error fetching tests:", error);
-    }
-  }, [setTests, auth.token]);
-
-  useEffect(() => {
-    fetchTests();
-  }, [fetchTests]);
+  const { data, loading, error } = useFetchData("/tests/");
 
   const handleEdit = (testId) => {
     // Handle edit action
@@ -59,15 +31,12 @@ const Tests = () => {
             "Content-Type": "application/json",
             "x-access-token": auth.token,
           },
-          //   body: JSON.stringify({
-          //     role: "USER",
-          //   }),
         }
       );
 
       if (response.ok) {
         toast.success("Test deleted");
-        fetchTests();
+        // fetchTests();
       } else {
         // Handle error response
         console.error("Failed to fetch tests:", response.statusText);
@@ -83,6 +52,14 @@ const Tests = () => {
     console.log(`Disabling test with ID ${testId}`);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <PageLayout>
       <div className="flex flex-col p-2 gap-1">
@@ -96,7 +73,7 @@ const Tests = () => {
         </div>
 
         <TestList
-          tests={tests}
+          tests={data?.data}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onDisable={handleDisable}

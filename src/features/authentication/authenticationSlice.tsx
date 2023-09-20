@@ -1,6 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialAuthState = {
+interface UserDetails {
+  username: string;
+  role: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface AuthState {
+  message: string;
+  token: string;
+  refreshToken: string;
+  userDetails: UserDetails;
+}
+
+interface AuthenticationState {
+  auth: AuthState;
+}
+
+const initialAuthState: AuthState = {
   message: "not authenticated",
   token: "",
   refreshToken: "",
@@ -18,7 +36,7 @@ export const authenticationSlice = createSlice({
     auth: initialAuthState,
   },
   reducers: {
-    updateAuthenticated: (state, param) => {
+    updateAuthenticated: (state, param: PayloadAction<AuthState>) => {
       const { payload } = param;
       state.auth = { ...state.auth, ...payload };
     },

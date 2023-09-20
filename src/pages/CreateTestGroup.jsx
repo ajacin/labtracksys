@@ -22,8 +22,6 @@ const CreateTest = () => {
       "6477b41332ade7e70fdcc849",
       "6477b6f61c93d3956b79112a",
       "6477c4bd20aad115f7c6f443",
-      "6477c4bd20aad115f7c6f444",
-      "6477c4bd20aad115f7c6f445",
     ],
     createdBy: null,
   });
@@ -64,7 +62,7 @@ const CreateTest = () => {
     e.preventDefault();
 
     // Send user data to the server using fetch
-    fetch(process.env.REACT_APP_API_URL + "/testgroup/create", {
+    fetch(process.env.REACT_APP_API_URL + "/testgroups/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +131,7 @@ const CreateTest = () => {
                 </div>
               </div>
 
-              {formData.testIds.map((test) => {
+              {formData?.testIds?.map((test) => {
                 return (
                   <div className="col-span-3 md:col-span-1 p-2">
                     {" "}
