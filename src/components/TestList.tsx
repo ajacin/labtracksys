@@ -3,8 +3,27 @@ import React from "react";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import { BiUserCircle } from "react-icons/bi";
+import { Test } from "../types/TestInterface";
 
-const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
+// type Tests = {
+//   name: string;
+//   createdBy: string;
+//   description: string;
+// };
+
+interface TestListProps {
+  tests?: Test[];
+  onEdit: () => void;
+  onDelete: () => void;
+  onDisable: () => void;
+}
+
+const TestList = ({
+  tests = [],
+  onEdit,
+  onDelete,
+  onDisable,
+}: TestListProps) => {
   //   const [selectedUser, setSelectedUser] = useState(tests[0]);
   //   useEffect(() => {
   //     setSelectedUser(tests[0]);
@@ -12,36 +31,36 @@ const TestList = ({ tests = [], onEdit, onDelete, onDisable }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
-      <div class="my-2 w-full">
-        <div class="rounded-lg border shadow-md p-2">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold leading-none text-secondary dark:text-white">
+      <div className="my-2 w-full">
+        <div className="rounded-lg border shadow-md p-2">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-bold leading-none text-secondary dark:text-white">
               Tests
             </h3>
-            <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+            <p className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
               {tests?.length ?? ""} tests
             </p>
           </div>
-          <div class="flow-root">
-            <ul class="divide-y divide-gray-300 h-128 overflow-scroll">
+          <div className="flow-root">
+            <ul className="divide-y divide-gray-300 h-128 overflow-scroll">
               {tests?.map((test) => {
                 return (
                   <li
-                    class="py-3 sm:py-4 px-2 md:px-4"
+                    className="py-3 sm:py-4 px-2 md:px-4"
                     key={test.name}
                     // onClick={() => setSelectedUser(test)}
                   >
-                    <div class="flex items-center space-x-4">
-                      <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-secondary truncate dark:text-white">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-secondary truncate dark:text-white">
                           {`${test.name}`}
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                           {`${test.description}`}
                         </p>
                       </div>
-                      <div class="flex flex-col w-20">
-                        <p class="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
+                      <div className="flex flex-col w-20">
+                        <p className="flex text-sm text-gray-500 truncate items-center font-semibold gap-1">
                           <BiUserCircle className="text-secondary" />
                           {`${test.createdBy ? test.createdBy : "System"}`}
                         </p>

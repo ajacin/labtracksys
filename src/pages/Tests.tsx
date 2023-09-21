@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Panel from "../components/Panel";
@@ -8,18 +8,19 @@ import SearchUsers from "../components/SearchUsers";
 import TestList from "../components/TestList";
 import PageLayout from "../components/router-layouts/PageLayout";
 import useFetchData from "../hooks/generic/useFetch";
+import { RootState } from "../store/store";
+import { TestResponse } from "../types/TestInterface";
 const Tests = () => {
-  const [tests, setTests] = useState([]);
-  const auth = useSelector((state) => state.authentication.auth);
+  const auth = useSelector((state: RootState) => state.authentication.auth);
 
-  const { data, loading, error } = useFetchData("/tests/");
+  const { data, loading, error } = useFetchData<TestResponse>("/tests/");
 
-  const handleEdit = (testId) => {
+  const handleEdit = (testId: string = "0") => {
     // Handle edit action
     console.log(`Edit`);
   };
 
-  const handleDelete = async (testId) => {
+  const handleDelete = async (testId: string = "0") => {
     // Handle delete action
     try {
       toast(`Deleting test`);
@@ -47,7 +48,7 @@ const Tests = () => {
     }
   };
 
-  const handleDisable = (testId) => {
+  const handleDisable = (testId: string = "0") => {
     // Handle disable action
     console.log(`Disabling test with ID ${testId}`);
   };
@@ -71,7 +72,6 @@ const Tests = () => {
         <div className=" w-full flex justify-end">
           <SearchUsers></SearchUsers>
         </div>
-
         <TestList
           tests={data?.data}
           onEdit={handleEdit}
