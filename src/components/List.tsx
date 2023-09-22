@@ -2,35 +2,38 @@ import React, { useState } from "react";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 // import { ToastContainer } from "react-toastify";
 // import { BiUserCircle } from "react-icons/bi";
+import { Test } from "../types/TestInterface";
 
-const List = (testList) => {
+type ListProps = Pick<Test, "name" | "description">;
+
+const List = (testList: ListProps) => {
   const [tests] = useState([{ name: "name1", description: "description1" }]);
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
-      <div class="my-2 w-full">
-        <div class="rounded-lg border shadow-md p-2">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold leading-none text-secondary dark:text-white">
+      <div className="my-2 w-full">
+        <div className="rounded-lg border shadow-md p-2">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-bold leading-none text-secondary dark:text-white">
               Tests
             </h3>
-            <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+            <p className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
               tests
             </p>
           </div>
-          <div class="flow-root">
-            <ul class="divide-y divide-gray-300 h-128 overflow-scroll">
+          <div className="flow-root">
+            <ul className="divide-y divide-gray-300 h-128 overflow-scroll">
               {tests?.map((test) => {
                 return (
                   <li
-                    class="py-3 sm:py-4 px-2 md:px-4"
+                    className="py-3 sm:py-4 px-2 md:px-4"
                     // onClick={() => setSelectedUser(test)}
                   >
-                    <div class="flex items-center space-x-4">
-                      <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-secondary truncate dark:text-white">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-secondary truncate dark:text-white">
                           {`${test.name}`}
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                           {`${test.description}`}
                         </p>
                       </div>

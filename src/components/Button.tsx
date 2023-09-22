@@ -1,6 +1,13 @@
 import React from "react";
 
-const Button = ({ variant, type, text, onButtonClick }) => {
+type ButtonProps = {
+  variant?: string;
+  type?: "button" | "submit" | "reset";
+  text?: string;
+  onButtonClick?: () => void;
+};
+
+const Button = ({ variant, type, text, onButtonClick }: ButtonProps) => {
   let classes =
     variant === "primary"
       ? "bg-primary hover:bg-secondary text-dark hover:text-light font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

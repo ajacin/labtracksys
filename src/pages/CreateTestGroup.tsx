@@ -8,25 +8,28 @@ import TextInputField from "../components/form-fields/TextInputField";
 import SelectInputField from "../components/form-fields/SelectInputField";
 // import InputListFromId from "../components/InputListFromId";
 import List from "../components/List";
+import { RootState } from "../store/store";
+
+type formDataProps = {
+  name: string;
+  description: string;
+  testIds?: string[];
+  createdBy: string;
+};
+
 const CreateTest = () => {
-  // const [name, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [role, setRole] = useState("USER");
-  const [formData, setFormData] = useState({
-    name: null,
-    description: null,
+  const [formData, setFormData] = useState<formDataProps>({
+    name: "",
+    description: "",
     testIds: [
       "6477b41332ade7e70fdcc849",
       "6477b6f61c93d3956b79112a",
       "6477c4bd20aad115f7c6f443",
     ],
-    createdBy: null,
+    createdBy: "",
   });
 
-  const auth = useSelector((state) => state.authentication.auth);
+  const auth = useSelector((state: RootState) => state.authentication.auth);
 
   // const fetchTests = useCallback(async () => {
   //   try {
@@ -58,7 +61,7 @@ const CreateTest = () => {
   //   fetchTests();
   // }, [fetchTests]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Send user data to the server using fetch
@@ -77,7 +80,7 @@ const CreateTest = () => {
           theme: "colored",
         });
         // Reset form fields after successful submission
-        setFormData({});
+        setFormData({ name: "", description: "", createdBy: "" });
       })
       .catch((error) => {
         toast.error("Test creation failed!", {
@@ -90,14 +93,16 @@ const CreateTest = () => {
   };
 
   const addTest = () => {
-    let iDs = formData.testIds;
-    iDs.push("");
-    setFormData({ ...formData, testIds: iDs });
+    if (formData.testIds?.length) {
+      let iDs: string[] = formData.testIds;
+      // iDs.push("");
+      setFormData({ ...formData, testIds: iDs });
+    }
   };
 
   return (
     <>
-      <PageLayout className="border-xl">
+      <PageLayout>
         <div className="w-screen p-4">
           <h2 className="text-2xl font-semibold mb-4">CREATE A TEST GROUP</h2>
           <form
@@ -109,14 +114,14 @@ const CreateTest = () => {
               id="name"
               value={formData.name}
               required
-              onFieldChange={(val) =>
+              onFieldChange={(val: string) =>
                 setFormData((old) => ({ ...old, name: val }))
               }
             ></TextInputField>
             <TextInputField
               label="Description"
               id="description"
-              value={formData.description}
+              value={formData?.description}
               onFieldChange={(val) =>
                 setFormData((old) => ({ ...old, description: val }))
               }
