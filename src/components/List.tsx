@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 // import { ToastContainer } from "react-toastify";
 // import { BiUserCircle } from "react-icons/bi";
-import { Test } from "../types/TestInterface";
+import { Test, TestResponse } from "../types/TestInterface";
+import useFetchData from "../hooks/generic/useFetch";
 
-type ListProps = Pick<Test, "name" | "description">;
+// type ListProps = {
+//   Pick<Test, "name" | "description">[]}
+type ListProps = {
+  testIds: Test["_id"][];
+};
 
-const List = (testList: ListProps) => {
-  const [tests] = useState([{ name: "name1", description: "description1" }]);
+const List = ({ testIds }: ListProps) => {
+  const [tests, setTests] = useState<Test[] | undefined>([]);
+
+  const { data, loading, error } = useFetchData<TestResponse>("/tests/");
+
+  useEffect(() => {
+    setTests(data?.data);
+  }, [data]);
+  if (error) return <div>error</div>;
+  if (loading) return <div>loading</div>;
   return (
     <div className="flex flex-col md:flex-row justify-start items-start">
       <div className="my-2 w-full">
@@ -16,8 +29,11 @@ const List = (testList: ListProps) => {
             <h3 className="text-xl font-bold leading-none text-secondary dark:text-white">
               Tests
             </h3>
-            <p className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-              tests
+            <p className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 md:hidden">
+              {testIds.length}/{data?.data?.length} selected.
+            </p>
+            <p className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 hidden md:flex">
+              {testIds.length} out of {data?.data?.length} tests selected.
             </p>
           </div>
           <div className="flow-root">

@@ -9,11 +9,12 @@ import SelectInputField from "../components/form-fields/SelectInputField";
 // import InputListFromId from "../components/InputListFromId";
 import List from "../components/List";
 import { RootState } from "../store/store";
+import { Test, TestResponse } from "../types/TestInterface";
 
 type formDataProps = {
   name: string;
   description: string;
-  testIds?: string[];
+  testIds: Test["_id"][];
   createdBy: string;
 };
 
@@ -80,7 +81,7 @@ const CreateTest = () => {
           theme: "colored",
         });
         // Reset form fields after successful submission
-        setFormData({ name: "", description: "", createdBy: "" });
+        setFormData({ name: "", description: "", createdBy: "", testIds: [] });
       })
       .catch((error) => {
         toast.error("Test creation failed!", {
@@ -92,13 +93,13 @@ const CreateTest = () => {
       });
   };
 
-  const addTest = () => {
-    if (formData.testIds?.length) {
-      let iDs: string[] = formData.testIds;
-      // iDs.push("");
-      setFormData({ ...formData, testIds: iDs });
-    }
-  };
+  // const addTest = () => {
+  //   if (formData.testIds?.length) {
+  //     let iDs: string[] = formData.testIds;
+  //     // iDs.push("");
+  //     setFormData({ ...formData, testIds: iDs });
+  //   }
+  // };
 
   return (
     <>
@@ -126,30 +127,8 @@ const CreateTest = () => {
                 setFormData((old) => ({ ...old, description: val }))
               }
             ></TextInputField>
-            <div className="col-span-3 grid grid-cols-3 border rounded py-3">
-              <div className="col-span-3 grid grid-cols-3 px-3 mb-6 md:mb-2">
-                <h4 className="col-span-1 font-semibold">TESTS</h4>
-                <div className="hidden md:flex col-span-1"></div>
-                <div className="col-span-2 md:col-span-1 flex items-center justify-around bg-light border border-gray p-1">
-                  <Button text={"+"} onButtonClick={() => addTest()}></Button>
-                  <span>{formData?.testIds?.length} tests</span>
-                </div>
-              </div>
-
-              {formData?.testIds?.map((test) => {
-                return (
-                  <div className="col-span-3 md:col-span-1 p-2">
-                    {" "}
-                    <SelectInputField
-                      label="Included Test"
-                      value={test}
-                    ></SelectInputField>
-                  </div>
-                );
-              })}
-            </div>
             <div className="col-span-3">
-              <List></List>
+              <List testIds={formData.testIds}></List>
             </div>
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0"></div>
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0">
