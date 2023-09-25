@@ -4,21 +4,54 @@ import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 // import { BiUserCircle } from "react-icons/bi";
 import { Test, TestResponse } from "../types/TestInterface";
 import useFetchData from "../hooks/generic/useFetch";
+import CheckBox from "./form-fields/CheckBox";
 
 // type ListProps = {
 //   Pick<Test, "name" | "description">[]}
 type ListProps = {
   testIds: Test["_id"][];
+  updateTestIds: (testIdsSelected: Test["_id"][]) => void;
 };
 
-const List = ({ testIds }: ListProps) => {
-  const [tests, setTests] = useState<Test[] | undefined>([]);
+const List = ({ testIds, updateTestIds }: ListProps) => {
+  const [tests, setTests] = useState<Test[]>([]);
 
   const { data, loading, error } = useFetchData<TestResponse>("/tests/");
 
   useEffect(() => {
-    setTests(data?.data);
+    if (data) {
+      let testsData = data?.data;
+      testsData?.map((each) => {
+        each.checked = false;
+        if (testIds.includes(each._id)) {
+          each.checked = true;
+        }
+        return each;
+      });
+      setTests(testsData ?? []);
+    }
   }, [data]);
+
+  useEffect(() => {
+    updateTestIds(
+      tests?.filter((each) => each.checked === true).map((each) => each?._id)
+    );
+  }, [tests]);
+
+  const handleTestSelection = (checkedValue: boolean, index: number) => {
+    console.log(checkedValue, index);
+    const newArray = tests?.map((item, i) => {
+      console.log("checkedval", checkedValue);
+      console.log(index, i);
+      if (index === i) {
+        console.log(item.name, index, i);
+        return { ...item, checked: checkedValue };
+      } else {
+        return item;
+      }
+    });
+    setTests(newArray);
+  };
   if (error) return <div>error</div>;
   if (loading) return <div>loading</div>;
   return (
@@ -38,7 +71,7 @@ const List = ({ testIds }: ListProps) => {
           </div>
           <div className="flow-root">
             <ul className="divide-y divide-gray-300 h-128 overflow-scroll">
-              {tests?.map((test) => {
+              {tests?.map((test, index) => {
                 return (
                   <li
                     className="py-3 sm:py-4 px-2 md:px-4"
@@ -47,6 +80,22 @@ const List = ({ testIds }: ListProps) => {
                     <div className="flex items-center space-x-4">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-secondary truncate dark:text-white">
+                          {/* <CheckBox
+                            checked={test.checked}
+                            onChange={(isChecked) => {
+                              console.log(isChecked);
+                            }}
+                          ></CheckBox> */}
+                          <input
+                            type="checkbox"
+                            key={test?._id}
+                            checked={test?.checked}
+                            onChange={(
+                              e: React.ChangeEvent<HTMLInputElement>
+                            ) => {
+                              handleTestSelection(e.target.checked, index);
+                            }}
+                          />
                           {`${test.name}`}
                         </p>
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">

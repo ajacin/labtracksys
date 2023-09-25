@@ -25,4 +25,5 @@ export type Test = {
   resultStrings?: string[] | null;
   createdBy?: null | string;
   __v?: number;
+  checked: boolean;
 };

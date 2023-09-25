@@ -18,15 +18,16 @@ type formDataProps = {
   createdBy: string;
 };
 
+//Test Ids
+//"6477b41332ade7e70fdcc849",
+//   "6477b6f61c93d3956b79112a",
+// "6477c4bd20aad115f7c6f443",
+
 const CreateTest = () => {
   const [formData, setFormData] = useState<formDataProps>({
     name: "",
     description: "",
-    testIds: [
-      "6477b41332ade7e70fdcc849",
-      "6477b6f61c93d3956b79112a",
-      "6477c4bd20aad115f7c6f443",
-    ],
+    testIds: [],
     createdBy: "",
   });
 
@@ -61,6 +62,11 @@ const CreateTest = () => {
   // useEffect(() => {
   //   fetchTests();
   // }, [fetchTests]);
+
+  const updateTestIds = (selectedTestIds: Test["_id"][]) => {
+    let formDataTemp = { ...formData, testIds: selectedTestIds };
+    setFormData(formDataTemp);
+  };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -128,7 +134,10 @@ const CreateTest = () => {
               }
             ></TextInputField>
             <div className="col-span-3">
-              <List testIds={formData.testIds}></List>
+              <List
+                testIds={formData.testIds}
+                updateTestIds={updateTestIds}
+              ></List>
             </div>
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0"></div>
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0">
