@@ -89,6 +89,7 @@ const List = ({ testIds, updateTestIds }: ListProps) => {
                             type="checkbox"
                             key={test?._id}
                             checked={test?.checked}
+                            className="m-2"
                             onChange={(
                               e: React.ChangeEvent<HTMLInputElement>
                             ) => {
