@@ -41,7 +41,7 @@ const useFetchData = <T,>(endpoint: string): FetchDataResponse<T> => {
     };
 
     fetchData();
-  }, [endpoint]);
+  }, [endpoint,auth.token]);
 
   return { data, loading, error };
 };

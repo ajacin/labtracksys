@@ -14,10 +14,6 @@ interface AuthState {
   userDetails: UserDetails;
 }
 
-interface AuthenticationState {
-  auth: AuthState;
-}
-
 const initialAuthState: AuthState = {
   message: "not authenticated",
   token: "",

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import Roles from "../constants/Roles";
 import ProtectedLink from "./ProtectedLink";
 import { FaHome } from "react-icons/fa";
 import { RootState } from "../store/store";

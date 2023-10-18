@@ -4,7 +4,6 @@ import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 // import { BiUserCircle } from "react-icons/bi";
 import { Test, TestResponse } from "../types/TestInterface";
 import useFetchData from "../hooks/generic/useFetch";
-import CheckBox from "./form-fields/CheckBox";
 
 // type ListProps = {
 //   Pick<Test, "name" | "description">[]}
@@ -30,13 +29,13 @@ const List = ({ testIds, updateTestIds }: ListProps) => {
       });
       setTests(testsData ?? []);
     }
-  }, [data]);
+  }, [data,testIds]);
 
   useEffect(() => {
     updateTestIds(
       tests?.filter((each) => each.checked === true).map((each) => each?._id)
     );
-  }, [tests]);
+  }, [tests,updateTestIds]);
 
   const handleTestSelection = (checkedValue: boolean, index: number) => {
     console.log(checkedValue, index);

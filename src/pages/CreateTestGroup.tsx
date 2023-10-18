@@ -5,11 +5,10 @@ import Button from "../components/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TextInputField from "../components/form-fields/TextInputField";
-import SelectInputField from "../components/form-fields/SelectInputField";
 // import InputListFromId from "../components/InputListFromId";
 import List from "../components/List";
 import { RootState } from "../store/store";
-import { Test, TestResponse } from "../types/TestInterface";
+import { Test } from "../types/TestInterface";
 
 type formDataProps = {
   name: string;
