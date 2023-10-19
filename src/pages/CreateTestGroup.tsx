@@ -114,24 +114,25 @@ const CreateTest = () => {
           <form
             onSubmit={handleSubmit}
             className="grid gap-1 grid-cols-1 md:grid-cols-3"
-          >
+          ><div className="col-span-3 flex">
             <TextInputField
               label="Name"
               id="name"
+              
               value={formData.name}
               required
               onFieldChange={(val: string) =>
                 setFormData((old) => ({ ...old, name: val }))
               }
-            ></TextInputField>
-            <TextInputField
+            ></TextInputField></div>
+            <div className="col-span-3 flex"><TextInputField
               label="Description"
               id="description"
               value={formData?.description}
               onFieldChange={(val) =>
                 setFormData((old) => ({ ...old, description: val }))
               }
-            ></TextInputField>
+            ></TextInputField></div>
             <div className="col-span-3">
               <List
                 testIds={formData.testIds}
@@ -141,6 +142,7 @@ const CreateTest = () => {
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0"></div>
             <div className="text-right w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <Button type="submit" text="Create"></Button>
+              <Button type="button" text="Cancel"></Button>
             </div>
           </form>
           {/* <InputListFromId
