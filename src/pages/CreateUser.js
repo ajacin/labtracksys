@@ -37,7 +37,16 @@ const CreateUser = () => {
       },
       body: JSON.stringify(user),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          // Handle the error response here
+          return response.json().then((errorData) => {
+            throw new Error(errorData.message);
+          });
+        }
+      })
       .then((data) => {
         console.log("User created:", data);
         toast.success("User created!", {
@@ -53,12 +62,11 @@ const CreateUser = () => {
         setRole("USER");
       })
       .catch((error) => {
-        toast.error("User creation failed!", {
+        toast.error(error.message || "An error occurred", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: false,
           theme: "colored",
         });
-        console.error("Error creating user:", error);
       });
   };
 
