@@ -114,7 +114,7 @@ const CreateTest = () => {
           <form
             onSubmit={handleSubmit}
             className="grid gap-1 grid-cols-1 md:grid-cols-3"
-          ><div className="col-span-3 flex">
+          ><div className="col-span-3 md:col-span-1 flex">
             <TextInputField
               label="Name"
               id="name"
@@ -125,7 +125,7 @@ const CreateTest = () => {
                 setFormData((old) => ({ ...old, name: val }))
               }
             ></TextInputField></div>
-            <div className="col-span-3 flex"><TextInputField
+            <div className="col-span-3 md:col-span-1 flex"><TextInputField
               label="Description"
               id="description"
               value={formData?.description}
