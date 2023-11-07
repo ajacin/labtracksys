@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ProtectedLink from "./ProtectedLink";
 import { FaHome } from "react-icons/fa";
 import { RootState } from "../store/store";
+import Roles from "../constants/Roles";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -60,6 +61,13 @@ const Navbar = () => {
                   text="Admin"
                   allowed
                 ></ProtectedLink> */}
+                <ProtectedLink
+                  roles={[Roles.SUPERUSER, Roles.ADMIN, Roles.ADMIN]}
+                  userRole={userRole}
+                  to="/activitylogs"
+                  text="Activity Logs"
+                  allowed
+                ></ProtectedLink>
                 <ProtectedLink
                   userRole={userRole}
                   to="/logout"
@@ -168,6 +176,13 @@ const Navbar = () => {
             allowed
             smallScreen
           ></ProtectedLink> */}
+          <ProtectedLink
+            roles={[Roles.SUPERUSER, Roles.ADMIN, Roles.ADMIN]}
+            userRole={userRole}
+            to="/activitylogs"
+            text="Activity Logs"
+            allowed
+          ></ProtectedLink>
           <ProtectedLink
             userRole={userRole}
             to="/logout"
