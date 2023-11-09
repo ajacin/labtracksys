@@ -1,10 +1,21 @@
 import React from "react";
 import PageLayout from "../../components/router-layouts/PageLayout";
+import Panel from "../../components/Panel";
+import PanelButton from "../../components/PanelButton";
+import { FaRegPlusSquare } from "react-icons/fa";
+import ActivityLogsList from "./ActivityLogsList";
 
 const ActivityLogs = () => {
   return (
     <PageLayout>
-      <div>Activitylogs Panel</div>
+      <>
+        <Panel>
+          <PanelButton text="Event">
+            <FaRegPlusSquare className="text-secondary" />
+          </PanelButton>
+        </Panel>
+        <ActivityLogsList></ActivityLogsList>
+      </>
     </PageLayout>
   );
 };
