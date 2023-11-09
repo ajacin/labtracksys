@@ -17,6 +17,7 @@ import CreateTest from "../pages/CreateTest";
 import CreateTestGroup from "../pages/CreateTestGroup";
 import TestGroups from "../pages/TestGroups";
 import ActivityLogs from "../pages/activitylogs/ActivityLogs";
+import ActivityTypes from "../pages/activitylogs/ActivityTypes";
 
 function AllRoutes() {
   return (
@@ -47,6 +48,10 @@ function AllRoutes() {
         {/* Activity Logs */}
         <Route path="/activitylogs">
           <Route index element={<ActivityLogs></ActivityLogs>} />
+        </Route>
+        {/* Activity Types */}
+        <Route path="/activitytypes">
+          <Route index element={<ActivityTypes></ActivityTypes>}></Route>
         </Route>
         <Route path="/users">
           <Route index element={<Users></Users>} />

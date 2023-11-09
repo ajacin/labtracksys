@@ -33,11 +33,6 @@ const ActivityLogsList = () => {
     return date.toLocaleString("en-US", options);
   }
 
-  // Example usage:
-  const timestamp = "2023-11-09T01:05:17.051Z";
-  const formattedDate = formatTimestampToReadableDate(timestamp);
-  console.log(formattedDate);
-
   if (loading) {
     return <div className="text-center mt-4">Loading...</div>;
   }
