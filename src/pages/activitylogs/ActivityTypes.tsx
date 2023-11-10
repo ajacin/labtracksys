@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useFetchData from "src/hooks/generic/useFetch";
 import PageLayout from "src/components/router-layouts/PageLayout";
+import { FaEdit, FaRegPlusSquare, FaTrash } from "react-icons/fa";
 import useDelete from "src/hooks/generic/useDelete";
-import { toast } from "react-toastify";
 import PanelButton from "src/components/PanelButton";
-import { FaRegPlusSquare } from "react-icons/fa";
+import { toast } from "react-toastify";
 import Tag from "src/components/Tag";
+import ConfirmationDialog from "src/components/confirmationDialog/ConfirmationDialog";
 
 // Create a type or interface for your data
 interface Activities {
@@ -21,6 +22,8 @@ type Data = {
 
 const ActivityTypes = () => {
   const { data, loading, error } = useFetchData<Data>("/activities/");
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [activityIdToDelete, setActivityIdToDelete] = useState("");
   const {
     success: deleteSuccess,
     error: deleteError,
@@ -30,6 +33,8 @@ const ActivityTypes = () => {
   useEffect(() => {
     // Show toast on successful deletion
     if (deleteSuccess) {
+      setShowConfirmation(false);
+      window.location.reload();
       toast.success("Activity type deleted successfully!");
     }
     if (deleteError) toast.error("Delete failed!");
@@ -52,44 +57,72 @@ const ActivityTypes = () => {
   };
 
   const handleDelete = (id: string) => {
-    // Call the useDelete hook to initiate the delete operation
-    deleteData(id, "/activities");
+    setActivityIdToDelete(id);
+    setShowConfirmation(true);
+  };
+
+  const confirmDelete = () => {
+    console.log(`Deleting activity type with ID: ${activityIdToDelete}`);
+    deleteData(activityIdToDelete, "/activities");
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   return (
     <PageLayout>
-      <div className="w-full h-screen overflow-y-auto">
-        <div className="mx-auto max-w-4xl p-4">
-          {data?.data?.map((item: Activities) => (
-            <div key={item.id} className="border p-4 m-4 rounded-md shadow-md">
-              <h3 className="text-2xl font-semibold">{item.activityName}</h3>
-              <p className="text-gray-700">{item.activityDescription}</p>
-              <p className="text-gray-500">Status: {item.active}</p>
-              <Tag
-                color="tertiary"
-                text={item.active ? "active" : "inactive"}
-              ></Tag>
-              <div className="flex justify-end mt-4">
-                <button
-                  className="bg-primary text-white px-4 py-2 rounded-md mr-2"
-                  onClick={() => handleEdit(item.id)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="bg-secondary text-white px-4 py-2 rounded-md"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  Delete
-                </button>
+      <>
+        <div className="w-full h-screen overflow-y-auto">
+          <div className="mx-auto max-w-4xl p-4">
+            {data?.data?.map((item: Activities) => (
+              <div
+                key={item.id}
+                className="border p-4 m-4 rounded-md shadow-md relative"
+              >
+                <div className="flex justify-between items-center">
+                  <h3 className="text-2xl font-semibold">
+                    {item.activityName}
+                  </h3>
+                  <div className="flex">
+                    <button
+                      className="bg-primary text-white px-4 py-2 rounded-md mr-2"
+                      onClick={() => handleEdit(item.id)}
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      className="bg-secondary text-white px-4 py-2 rounded-md"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                </div>
+                <p className="text-gray-700">{item.activityDescription}</p>
+                <p className="text-gray-500">Status: {item.active}</p>
+                <Tag
+                  color="tertiary"
+                  text={item.active ? "active" : "inactive"}
+                ></Tag>
               </div>
-            </div>
-          ))}
-          <PanelButton text="Add New" to="/activitytypes/create">
-            <FaRegPlusSquare className="text-secondary" />
-          </PanelButton>
+            ))}
+            <PanelButton text="Add New" to="/activitytypes/create">
+              <FaRegPlusSquare className="text-secondary" />
+            </PanelButton>
+          </div>
         </div>
-      </div>
+        <div className="w-full h-screen overflow-y-auto">
+          <div className="mx-auto max-w-4xl p-4">
+            {/* ... existing code */}
+            <ConfirmationDialog
+              show={showConfirmation}
+              onConfirm={confirmDelete}
+              onCancel={cancelDelete}
+            />
+          </div>
+        </div>
+      </>
     </PageLayout>
   );
 };
