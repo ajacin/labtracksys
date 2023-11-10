@@ -116,6 +116,7 @@ const ActivityTypes = () => {
           <div className="mx-auto max-w-4xl p-4">
             {/* ... existing code */}
             <ConfirmationDialog
+              text={"Are you sure you want to delete this activity?"}
               show={showConfirmation}
               onConfirm={confirmDelete}
               onCancel={cancelDelete}
