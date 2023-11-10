@@ -10,6 +10,7 @@ import PageLayout from "../components/router-layouts/PageLayout";
 import useFetchData from "../hooks/generic/useFetch";
 import { RootState } from "../store/store";
 import { TestResponse } from "../types/TestInterface";
+import Loading from "src/components/Loading";
 const Tests = () => {
   const auth = useSelector((state: RootState) => state.authentication.auth);
 
@@ -54,7 +55,7 @@ const Tests = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading></Loading>;
   }
 
   if (error) {

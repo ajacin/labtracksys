@@ -1,5 +1,6 @@
 import React from "react";
 import useFetchData from "../../hooks/generic/useFetch";
+import Loading from "../Loading";
 
 type DashboardDataType = {
   diapers: { count: number; cost: number };
@@ -16,7 +17,7 @@ const DashboardTile = () => {
   const { data, loading, error } = useFetchData<DashBoardData>("/dashboard");
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading></Loading>;
   }
 
   if (error) {

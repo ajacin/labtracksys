@@ -7,6 +7,7 @@ import PanelButton from "src/components/PanelButton";
 import { toast } from "react-toastify";
 import Tag from "src/components/Tag";
 import ConfirmationDialog from "src/components/confirmationDialog/ConfirmationDialog";
+import Loading from "src/components/Loading";
 
 // Create a type or interface for your data
 interface Activities {
@@ -41,7 +42,7 @@ const ActivityTypes = () => {
   }, [deleteSuccess, deleteError]);
 
   if (loading) {
-    return <div className="text-center mt-4">Loading...</div>;
+    return <Loading></Loading>;
   }
 
   if (error) {

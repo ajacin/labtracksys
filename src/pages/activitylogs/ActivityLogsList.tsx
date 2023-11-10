@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchData from "src/hooks/generic/useFetch";
 import { FaLightbulb } from "react-icons/fa";
+import Loading from "src/components/Loading";
 
 // Create a type or interface for your data
 interface ActivityLog {
@@ -34,7 +35,7 @@ const ActivityLogsList = () => {
   }
 
   if (loading) {
-    return <div className="text-center mt-4">Loading...</div>;
+    return <Loading></Loading>;
   }
 
   if (error) {
