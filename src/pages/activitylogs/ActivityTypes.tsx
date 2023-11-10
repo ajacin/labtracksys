@@ -108,9 +108,11 @@ const ActivityTypes = () => {
                 ></Tag>
               </div>
             ))}
-            <PanelButton text="Add New" to="/activitytypes/create">
-              <FaRegPlusSquare className="text-secondary" />
-            </PanelButton>
+            <div className="flex justify-end">
+              <PanelButton text="Add New" to="/activitytypes/create">
+                <FaRegPlusSquare className="text-secondary" />
+              </PanelButton>
+            </div>
           </div>
         </div>
         <div className="w-full h-screen overflow-y-auto">
