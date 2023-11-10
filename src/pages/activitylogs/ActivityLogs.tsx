@@ -13,7 +13,7 @@ const ActivityLogs = () => {
           <PanelButton text="Activity">
             <FaRegPlusSquare className="text-secondary" />
           </PanelButton>
-          <PanelButton text="Type">
+          <PanelButton text="Type" to="/activitytypes">
             <FaRegPlusSquare className="text-secondary" />
           </PanelButton>
         </Panel>

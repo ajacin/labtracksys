@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useFetchData from "src/hooks/generic/useFetch";
 import PageLayout from "src/components/router-layouts/PageLayout";
+import useDelete from "src/hooks/generic/useDelete";
+import { toast } from "react-toastify";
+import PanelButton from "src/components/PanelButton";
+import { FaRegPlusSquare } from "react-icons/fa";
+import Tag from "src/components/Tag";
 
 // Create a type or interface for your data
 interface Activities {
@@ -16,6 +21,19 @@ type Data = {
 
 const ActivityTypes = () => {
   const { data, loading, error } = useFetchData<Data>("/activities/");
+  const {
+    success: deleteSuccess,
+    error: deleteError,
+    deleteData,
+  } = useDelete();
+
+  useEffect(() => {
+    // Show toast on successful deletion
+    if (deleteSuccess) {
+      toast.success("Activity type deleted successfully!");
+    }
+    if (deleteError) toast.error("Delete failed!");
+  }, [deleteSuccess, deleteError]);
 
   if (loading) {
     return <div className="text-center mt-4">Loading...</div>;
@@ -34,11 +52,8 @@ const ActivityTypes = () => {
   };
 
   const handleDelete = (id: string) => {
-    console.log(`Deleting activity type with ID: ${id}`);
-  };
-
-  const handleAdd = () => {
-    console.log("Adding a new activity type");
+    // Call the useDelete hook to initiate the delete operation
+    deleteData(id, "/activities");
   };
 
   return (
@@ -50,6 +65,10 @@ const ActivityTypes = () => {
               <h3 className="text-2xl font-semibold">{item.activityName}</h3>
               <p className="text-gray-700">{item.activityDescription}</p>
               <p className="text-gray-500">Status: {item.active}</p>
+              <Tag
+                color="tertiary"
+                text={item.active ? "active" : "inactive"}
+              ></Tag>
               <div className="flex justify-end mt-4">
                 <button
                   className="bg-primary text-white px-4 py-2 rounded-md mr-2"
@@ -66,14 +85,9 @@ const ActivityTypes = () => {
               </div>
             </div>
           ))}
-          <div className="text-center">
-            <button
-              className="bg-tertiary text-white px-4 py-2 rounded-md"
-              onClick={handleAdd}
-            >
-              Add New Activity Type
-            </button>
-          </div>
+          <PanelButton text="Add New" to="/activitytypes/create">
+            <FaRegPlusSquare className="text-secondary" />
+          </PanelButton>
         </div>
       </div>
     </PageLayout>
