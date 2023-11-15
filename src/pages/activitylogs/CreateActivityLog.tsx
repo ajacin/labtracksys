@@ -70,7 +70,7 @@ const CreateActivityLog: React.FC = () => {
             onSubmit={handleSubmit}
             className="grid gap-1 grid-cols-1 md:grid-cols-3"
           >
-            <div className="col-span-3 md:col-span-1 flex">
+            {/* <div className="col-span-3 md:col-span-1 flex">
               <TextInputField
                 label="Title"
                 id="title"
@@ -80,7 +80,7 @@ const CreateActivityLog: React.FC = () => {
                   setFormData((old) => ({ ...old, title: val }))
                 }
               />
-            </div>
+            </div> */}
             <div className="col-span-3 md:col-span-1 flex">
               <TextInputField
                 label="Description"
@@ -96,8 +96,12 @@ const CreateActivityLog: React.FC = () => {
                 label="Activity ID"
                 id="activityId"
                 selectedValue={formData.activityId}
-                onValueChange={(val: string) =>
-                  setFormData((old) => ({ ...old, activityId: val }))
+                onValueChange={(val: string, activityName: string) =>
+                  setFormData((old) => ({
+                    ...old,
+                    activityId: val,
+                    title: activityName,
+                  }))
                 }
                 endpoint="/activities/"
               />

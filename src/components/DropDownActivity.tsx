@@ -5,7 +5,7 @@ interface DropdownProps {
   label: string;
   id: string;
   selectedValue: string;
-  onValueChange: (value: string) => void;
+  onValueChange: (value: string, activityName: string) => void;
   endpoint: string;
 }
 
@@ -42,7 +42,13 @@ const DropdownActivity: React.FC<DropdownProps> = ({
   }, [data, loading, error]);
 
   const handleValueChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onValueChange(e.target.value);
+    const selectedOption = options.find(
+      (option) => option.key === e.target.value
+    );
+
+    if (selectedOption) {
+      onValueChange(selectedOption.key, selectedOption.value);
+    }
   };
 
   if (loading) {
