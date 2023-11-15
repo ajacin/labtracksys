@@ -10,7 +10,7 @@ const ActivityLogs = () => {
     <PageLayout>
       <>
         <Panel>
-          <PanelButton text="Activity">
+          <PanelButton text="Activity" to="/activitylogs/create">
             <FaRegPlusSquare className="text-secondary" />
           </PanelButton>
           <PanelButton text="Type" to="/activitytypes">
