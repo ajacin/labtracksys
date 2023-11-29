@@ -46,14 +46,20 @@ const ActivityLogsList = () => {
     );
   }
 
+  // Sort the data based on the 'time' property in descending order
+  const sortedData = data?.data?.sort(
+    (a: ActivityLog, b: ActivityLog) =>
+      new Date(b.time).getTime() - new Date(a.time).getTime()
+  );
+
   return (
     <div className="w-full h-screen overflow-y-auto">
       <div className="timeline mx-auto max-w-4xl p-4">
-        {data?.data?.map((item: ActivityLog) => (
+        {sortedData?.map((item: ActivityLog) => (
           <div key={item.id} className="timeline-item">
             <div className="timeline-badge flex flex-row gap-2">
               <FaLightbulb></FaLightbulb>
-              <span className="text-secondary">
+              <span className="text-secondary p-4 bg-primary">
                 Time: {formatTimestampToReadableDate(item.time)}
               </span>
             </div>
@@ -61,9 +67,9 @@ const ActivityLogsList = () => {
               <div className="flex border-r-2 border-secondary ml-2"></div>
               <div className="flex flex-15 flex-col p-4">
                 <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p>ID: {item.id}</p>
+                {/* <p>ID: {item.id}</p> */}
                 <p>Description: {item.description}</p>
-                <p>Time: {item.time}</p>
+                {/* <p>Time: {item.time}</p> */}
                 <p>UserID: {item.userId}</p>
               </div>
             </div>
