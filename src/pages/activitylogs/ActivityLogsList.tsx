@@ -24,11 +24,11 @@ const ActivityLogsList = () => {
 
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
+      // second: "2-digit",
     };
 
     return date.toLocaleString("en-US", options);
@@ -59,7 +59,7 @@ const ActivityLogsList = () => {
           <div key={item.id} className="timeline-item">
             <div className="timeline-badge flex flex-row gap-2">
               <FaLightbulb></FaLightbulb>
-              <span className="text-secondary p-4 bg-primary">
+              <span className="text-secondary p-2 w-100 bg-primary flex flex-row gap-2 justify-center items-center">
                 <FaClock></FaClock>
                 {formatTimestampToReadableDate(item.time)}
               </span>
@@ -71,7 +71,7 @@ const ActivityLogsList = () => {
                 {/* <p>ID: {item.id}</p> */}
                 <p>Description: {item.description}</p>
                 {/* <p>Time: {item.time}</p> */}
-                <p>UserID: {item.userId}</p>
+                {/* <p>UserID: {item.userId}</p> */}
               </div>
             </div>
           </div>
