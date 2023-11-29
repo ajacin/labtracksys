@@ -1,6 +1,6 @@
 import React from "react";
 import useFetchData from "src/hooks/generic/useFetch";
-import { FaLightbulb } from "react-icons/fa";
+import { FaClock, FaLightbulb } from "react-icons/fa";
 import Loading from "src/components/Loading";
 
 // Create a type or interface for your data
@@ -60,7 +60,8 @@ const ActivityLogsList = () => {
             <div className="timeline-badge flex flex-row gap-2">
               <FaLightbulb></FaLightbulb>
               <span className="text-secondary p-4 bg-primary">
-                Time: {formatTimestampToReadableDate(item.time)}
+                <FaClock></FaClock>
+                {formatTimestampToReadableDate(item.time)}
               </span>
             </div>
             <div className="timeline-panel bg-white flex mb-2">
