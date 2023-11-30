@@ -1,6 +1,11 @@
 import React from "react";
 import PageLayout from "../components/router-layouts/PageLayout";
-import { FaUserAlt, FaClinicMedical, FaLayerGroup } from "react-icons/fa";
+import {
+  FaUserAlt,
+  FaClinicMedical,
+  FaLayerGroup,
+  FaTasks,
+} from "react-icons/fa";
 import PanelButton from "../components/PanelButton";
 import Panel from "../components/Panel";
 import DashboardTile from "../components/dashboard/DashboardTile";
@@ -17,6 +22,9 @@ function Home() {
           </PanelButton>
           <PanelButton to="/testgroups" text="Groups">
             <FaLayerGroup className="text-secondary"></FaLayerGroup>
+          </PanelButton>
+          <PanelButton to="/activitylogs" text="Activities">
+            <FaTasks className="text-secondary"></FaTasks>
           </PanelButton>
         </Panel>
         <div className="container mx-auto p-4">
